@@ -1,6 +1,6 @@
 {
   "name": "krlargo.github.io",
-	"homepage": "https://krlargo.github.io",
+  "homepage": "https://krlargo.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,5 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "master": "^1.0.1"
   }
 }
