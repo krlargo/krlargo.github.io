@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { ProjectHighlight } from '../components';
 
 class RightSidePanel extends Component {
   render() {
-    // Nested container divs required for floating right panel
-    return <div className="right-side-panel">Right Side Panel</div>;
+    return (
+      <div className="right-side-panel">
+        <ProjectHighlight />
+        <ProjectHighlight />
+      </div>
+    );
   }
 }
 
