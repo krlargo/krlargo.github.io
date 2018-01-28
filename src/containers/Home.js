@@ -13,13 +13,11 @@ class Home extends Component {
       <div>
         <Header />
         <div style={{ textAlign: 'center' }}>
-          <div className="page">
-            <LandingHeader />
-            <div className="content-container">
-              <LeftSidePanel />
-              <Content />
-              <RightSidePanel />
-            </div>
+          <LandingHeader />
+          <div className="content-container">
+            <LeftSidePanel />
+            <Content />
+            <RightSidePanel />
           </div>
         </div>
       </div>
