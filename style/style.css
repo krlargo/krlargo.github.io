@@ -77,8 +77,10 @@ body {
   background-size: cover;
   background-position: center;
 
-  height: 100vh; //600px;
+  /* Initially take up full screen */
+  height: calc(100vh - var(--header-height));
   width: 100vw;
+  position: relative;
   top: var(--header-height);
   z-index: 750;
 
@@ -90,10 +92,16 @@ body {
 
 .landing-header-text {
   text-align: left;
-  background-color: #ddd6;
+  background-color: #bbb6;
   color: white;
   font-family: 'Courier New';
   font-size: 40px;
+  height: 270px;
+  width: 695px;
+  /* Keep text from wrapping on window resize */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 /* Manages LeftSidePanel, Content & RightSidePanel */
@@ -101,8 +109,7 @@ body {
   height: 100%;
   width: var(--page-width);
   position: sticky;
-  margin-top: var(--margin);
-  top: calc(var(--header-height) + var(--margin));
+  margin-top: calc(var(--header-height) + var(--margin));
 
   display: inline-flex;
   flex-direction: row;
