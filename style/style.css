@@ -1,15 +1,32 @@
 :root {
-  --header-height: 120px;
+  --section-background-color: #aaaaaa55;
+  --header-height: 60px;
   --page-width: 1010px;
   --content-width: 500px;
   --leftSidePanel-flex: 1;
+  --leftSidePanel-width: calc(
+     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
+        --leftSidePanel-flex
+      ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
+  );
   --rightSidePanel-flex: 1;
+  --rightSidePanel-width: calc(
+     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
+        --rightSidePanel-flex
+      ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
+  );
+
+  --title-color: black;
+  --text-color: #555;
+  --font-family: 'Trebuchet MS';
+  --font-size: 16px;
   --margin: 12px;
 }
 
 body {
   background-color: whitesmoke;
-  margin: 0; // Removes default margin
+  margin: 0; // Removes default margin'
+  padding: 0;
 }
 
 .header {
@@ -18,36 +35,82 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 1000;
 }
 
-/* Container for all content divs besides header */
-.page {
-  display: inline-block;
-  height: 100%;
-  width: var(--page-width);
-  margin-top: var(--header-height);
+.navbar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.navbar li {
+  float: left;
+  font-family: var(--font-family);
+  font-size: 12px;
+}
+
+.navbar li a {
+  width: 60px;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navbar li a:hover {
+  background-color: #333;
 }
 
 .landing-header {
-  background-color: gray;
-  height: 500px;
-  width: 100%;
-  margin-top: var(--margin);
+  background-image: url('../src/images/landing-header-background/macbook-notepad.jpg');
+  background-size: cover;
+  background-position: center;
+
+  height: 100vh; //600px;
+  width: 100vw;
+  top: var(--header-height);
+  z-index: 750;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-header-text {
+  text-align: left;
+  background-color: #ddd6;
+  color: white;
+  font-family: 'Courier New';
+  font-size: 40px;
 }
 
 /* Manages LeftSidePanel, Content & RightSidePanel */
 .content-container {
+  height: 100%;
+  width: var(--page-width);
+  position: sticky;
+  margin-top: var(--margin);
+  top: calc(var(--header-height) + var(--margin));
+
   display: inline-flex;
   flex-direction: row;
-  height: auto;
   justify-content: center;
-  margin-top: var(--margin);
-  margin-bottom: var(--margin);
-  width: 100%;
 }
 
 .content {
-  background-color: lightgray;
+  background-color: var(--section-background-color);
   height: 100vh;
   width: var(--content-width);
   margin-left: var(--margin);
@@ -58,26 +121,68 @@ body {
   flex: var(--leftSidePanel-flex);
 }
 
-.left-side-panel-content {
-  background-color: lightgray;
-  height: 400px;
-  width: calc(
-     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
-        --leftSidePanel-flex
-      ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
-  );
-  margin: 0;
-  padding: 0;
-  position: sticky;
-  top: calc(var(--header-height) + var(--margin));
+.left-side-panel .section {
+  width: var(--leftSidePanel-width);
+  padding-bottom: var(--margin);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-side-panel img {
+  --profileImage-width: calc(var(--leftSidePanel-width)*0.65);
+
+  border: solid 2px darkgray;
+  border-radius: calc(var(--profileImage-width) / 2);
+  box-shadow: 0px 0px 5px darkgray;
+
+  height: var(--profileImage-width);
+  width: var(--profileImage-width);
+  margin: var(--margin);
+}
+
+.profile-content {
+  width: calc(var(--leftSidePanel-width)*0.65);
+  margin: var(--margin);
+  flex: 1;
+
+  text-align: center;
 }
 
 .right-side-panel {
-  background-color: lightgray;
   height: 100vh;
-  width: calc(
-     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
-        --rightSidePanel-flex
-      ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
-  );
+  width: var(--rightSidePanel-width);
+}
+
+.project-highlight {
+  height: 300px;
+  width: 100%;
+  margin-bottom: var(--margin);
+}
+
+.project-highlight h4 {
+  color: var(--title-color);
+  text-transform: uppercase;
+  font-family: var(--font-family);
+  margin: 0 var(--margin);
+  padding: var(--margin);
+}
+
+.project-highlight img {
+  margin: var(--margin);
+  --projectImage-width: calc(var(--rightSidePanel-width)*0.5);
+  height: var(--projectImage-width);
+  width: var(--projectImage-width);
+}
+
+.section {
+  background-color: var(--section-background-color);
+  height: 100%;
+  width: 100%;
+  box-shadow: 0px 2px 5px gray;
+
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  color: var(--text-color);
 }
