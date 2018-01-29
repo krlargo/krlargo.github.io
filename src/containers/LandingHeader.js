@@ -34,10 +34,10 @@ class LandingHeader extends Component {
       switch (line[0]) {
         case '{':
         case '}':
-          return <div>{line}</div>; // Don't append &nbsp;
+          return <div key={index}>{line}</div>; // Don't append &nbsp;
         default:
           return (
-            <div>
+            <div key={index}>
               &nbsp;{line}
               {atEndOfLine ? '' : this.cursor}
             </div>
