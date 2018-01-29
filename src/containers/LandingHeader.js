@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 class LandingHeader extends Component {
-  // The complete text to show
-  landingHeaderText = "{\n  name: 'Kevin Largo',\n  education: 'UC Davis',\n  degree: 'Computer Science',\n  location: 'Bay Area'\n}";
+  cursor = '█'; //|
 
   constructor() {
     super();
 
     this.state = {
+      text:
+        "{\n  name: 'Kevin Largo',\n  education: 'UC Davis',\n  degree: 'Computer Science',\n  location: 'Bay Area'\n}",
       index: 0,
       jsx: null
     };
@@ -20,12 +21,12 @@ class LandingHeader extends Component {
 
   startTypingAnimation() {
     if (!this.animationInterval)
-      this.animationInterval = setInterval(this.type.bind(this), 65);
+      this.animationInterval = setInterval(this.type.bind(this), 80);
   }
 
   // Convert substring to formatted JSX
   stringToJSX = text => {
-    const completeLines = this.landingHeaderText.split('\n');
+    const completeLines = this.state.text.split('\n');
     return text.split('\n').map((line, index) => {
       // Only append cursor | when NOT atEndOfLine
       const atEndOfLine = line == completeLines[index];
@@ -38,7 +39,7 @@ class LandingHeader extends Component {
           return (
             <div>
               &nbsp;{line}
-              {atEndOfLine ? '' : '|'}
+              {atEndOfLine ? '' : this.cursor}
             </div>
           );
       }
@@ -47,17 +48,11 @@ class LandingHeader extends Component {
 
   // Simulate typing, increment index and update JSX
   type = () => {
-    const {
-      state,
-      stringToJSX,
-      landingHeaderText,
-      animationInterval,
-      blinkCursor
-    } = this;
+    const { state, stringToJSX, animationInterval, blinkCursor } = this;
 
-    const { index } = state;
+    const { index, text } = state;
 
-    if (index >= landingHeaderText.length) {
+    if (index >= text.length) {
       clearInterval(animationInterval);
       this.setState({ index: 0, blinkCount: 0 });
       //this.animationInterval = null;
@@ -67,14 +62,14 @@ class LandingHeader extends Component {
 
     this.setState({
       index: index + 1,
-      jsx: stringToJSX(landingHeaderText.substring(0, index + 1))
+      jsx: stringToJSX(text.substring(0, index + 1))
     });
   };
 
   // At the end of typing, link cursor three times before disappearing
   blinkCursor = () => {
-    const { state, stringToJSX, landingHeaderText } = this;
-    const { blinkCount } = state;
+    const { state, stringToJSX } = this;
+    const { blinkCount, text } = state;
 
     if (blinkCount >= 6) {
       clearInterval(this.animationInterval);
@@ -82,22 +77,26 @@ class LandingHeader extends Component {
       return;
     }
 
-    // Appended to landingHeaderText as flashing cursor
-    const toggledCursor = blinkCount % 2 ? '' : '|';
+    // Appended to landing header text as flashing cursor
+    const toggledCursor = blinkCount % 2 ? '' : this.cursor;
 
     this.setState({
       blinkCount: blinkCount + 1,
-      jsx: stringToJSX(landingHeaderText + toggledCursor)
+      jsx: stringToJSX(text + toggledCursor)
     });
   };
 
   render() {
+    // landing-header-text is removed as child so that it can float on scroll
     return (
-      <div
-        className="landing-header"
-        onClick={this.startTypingAnimation.bind(this)}
-      >
-        <div className="landing-header-text">{this.state.jsx}</div>
+      <div>
+        <div className="landing-header" />
+        <div
+          className="landing-header-text"
+          onClick={this.startTypingAnimation.bind(this)}
+        >
+          {this.state.jsx}
+        </div>
       </div>
     );
   }
