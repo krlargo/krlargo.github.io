@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TechnologiesPanel extends Component {
+class SkillsPanel extends Component {
   constructor() {
     super();
   }
@@ -37,3 +37,5 @@ class TechnologiesPanel extends Component {
     );
   }
 }
+
+export default SkillsPanel;
