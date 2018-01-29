@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AppStoreIcon, GitHubIcon, LinkedInIcon } from '../images/tech-icons';
 
 class ProfilePanel extends Component {
   constructor() {
@@ -15,21 +16,27 @@ class ProfilePanel extends Component {
     const { profileImageURL, profileContent } = this.state;
     return (
       <div className="profile-panel">
-        <img src={profileImageURL} />
-        <div className="profile-content">{profileContent}</div>
-        <ul>
-          <li>
-            <a href="https://github.com/krlargo">Github</a>
-          </li>
-          <li>
-            <a href="https://wwww.linkedin.com/in/kevinlargo">LinkedIn</a>
-          </li>
-          <li>
-            <a href="https://itunes.apple.com/us/developer/kevin-largo/id1269350192?mt=8">
-              App Store Link
-            </a>
-          </li>
-        </ul>
+        <div className="section">
+          <img src={profileImageURL} />
+          <div className="profile-content">
+            {profileContent}
+
+            <div className="profile-link">
+              <AppStoreIcon height={25} width={25} />
+              <a href="https://itunes.apple.com/us/developer/kevin-largo/id1269350192?mt=8">
+                App Store Link
+              </a>
+            </div>
+            <div className="profile-link">
+              <GitHubIcon height={26} width={26} />
+              <a href="https://github.com/krlargo">GitHub</a>
+            </div>
+            <div className="profile-link">
+              <LinkedInIcon height={22} width={22} color={'black'} />
+              <a href="https://www.linkedin.com/in/kevinlargo">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
