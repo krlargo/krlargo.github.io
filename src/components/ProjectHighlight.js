@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 
 class ProjectHighlight extends Component {
-  constructor() {
-    super();
+  renderHighlights(highlights) {
+    return highlights.map((highlight, index) => {
+      return <li key={index}>highlight</li>;
+    });
+  }
 
-    this.state = {
-      name: 'Project 1',
-      description: 'This is a project',
-      imageURL:
-        'https://docs.google.com/drawings/d/1NZenN700uCF4OEvn0BstWG4r-dlZVNFkP91xjyLaPe4/pub?w=1049&h=1049'
-    };
+  renderSkills(skills) {
+    return skills.map((skill, index) => {
+      return (
+        <p key={index}>
+          {skill}
+          {index == skills.length - 1 ? '' : ','}
+        </p>
+      );
+    });
   }
 
   render() {
-    const { name, description, imageURL } = this.state;
+    const {
+      name,
+      description,
+      highlights,
+      technicalSkills,
+      imageURL
+    } = this.props.project;
 
     return (
       <div className="project-highlight">
@@ -21,6 +33,8 @@ class ProjectHighlight extends Component {
           <h4>{name}</h4>
           <img src={imageURL} />
           <p>{description}</p>
+          {this.renderHighlights(highlights)}
+          <ul>{this.renderSkills(technicalSkills)}</ul>
         </div>
       </div>
     );
