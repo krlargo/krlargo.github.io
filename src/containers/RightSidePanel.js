@@ -62,7 +62,12 @@ class RightSidePanel extends Component {
     const { projects } = this.state;
 
     return (
-      <div className="right-side-panel">{this.renderProjects(projects)}</div>
+      <div className="right-side-panel">
+        <div className="section featured-projects-header">
+          <h3>Recent Projects</h3>
+        </div>
+        {this.renderProjects(projects)}
+      </div>
     );
   }
 }
