@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import {
+  CppIcon,
+  FirebaseIcon,
+  JavaIcon,
+  JavaScriptIcon,
+  ReactIcon,
+  SwiftIcon,
+  SwiftIconColored
+} from '../images/tech-icons';
 
 class SkillsPanel extends Component {
   constructor() {
@@ -8,6 +17,12 @@ class SkillsPanel extends Component {
   render() {
     return (
       <div className="tecnhologies-panel">
+        <SwiftIcon width={75} height={75} />
+        <CppIcon width={75} height={75} />
+        <JavaIcon width={75} height={75} />
+        <JavaScriptIcon width={75} height={75} />
+        <FirebaseIcon width={75} height={75} />
+        <ReactIcon width={75} height={75} />
         <ul>
           <li>Mobile</li>
           <ul>
