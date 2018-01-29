@@ -6,10 +6,7 @@ class LeftSidePanel extends Component {
     return (
       <div>
         <div className="left-side-panel">
-          <div className="section">
-            <ProfilePanel />
-            <SkillsPanel />
-          </div>
+          <ProfilePanel />
         </div>
       </div>
     );
