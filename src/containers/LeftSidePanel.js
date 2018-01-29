@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProfilePanel, TechnologiesPanel } from '../components';
+import { SkillsPanel, ProfilePanel } from '../components';
 
 class LeftSidePanel extends Component {
   render() {
@@ -8,7 +8,7 @@ class LeftSidePanel extends Component {
         <div className="left-side-panel">
           <div className="section">
             <ProfilePanel />
-            <TechnologiesPanel />
+            <SkillsPanel />
           </div>
         </div>
       </div>
