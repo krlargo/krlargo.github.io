@@ -2,8 +2,8 @@
   --section-background-color: #cccc;
   --dark-background-color: #111e;
   --header-height: 60px;
-  --content-width: 1010px;
-  --centerPanel-width: 500px;
+  --content-width: 1050px;
+  --centerPanel-width: 575px;
   --leftSidePanel-flex: 1;
   --leftSidePanel-width: calc(
      (var(--content-width) - var(--centerPanel-width) - 2*var(--margin)) *var(
@@ -18,28 +18,28 @@
   );
 
   --title-color: black;
-  --text-color: #555;
-  --font-family: 'Trebuchet MS';
+  --text-color: #333;
+  --font-family: 'Arial';
   --font-size: 16px;
-  --margin: 12px;
+  --margin: 15px;
 }
 
 /*
- __________________
-|_header___________|
-|                  |
-| landing-header   |
-|__________________|
-|  ______________  |
-| |   |      |   | |
-| |LSP|CenPnl|RSP| |
-| |___|______|___| |
-|__________________|
+ ___________________
+|_header____________|
+|                   |
+| landing-header    |
+|___________________|
+|  _______________  |
+| |   |       |   | |
+| |LSP|Ctr Pnl|RSP| |
+| |___|_______|___| |
+|___________________|
 
-| '------,-------' |
-|    contents      |
-'--------,---------'
-       page
+| '-------,-------' |
+| content-container |
+'---------,---------'
+    main-container
 */
 
 body {
@@ -129,18 +129,21 @@ body {
   white-space: nowrap; /* Keep text from wrapping on window resize */
 }
 
-/* Manages LeftSidePanel, Content & RightSidePanel */
-.content-container {
+.main-container {
   background-color: var(--dark-background-color);
   height: 100%;
   width: 100vw;
-  padding-top: var(--margin);
-
-  /* Calculate hPadding based on desired content-width */
-  //padding-left: calc((100vw-var(--content-width))/2);
-  //padding-right: calc((100vw-var(--content-width))/2);
+  min-width: var(--content-width);
   position: relative;
   top: 100vh;
+}
+
+/* Manages LeftSidePanel, Content & RightSidePanel */
+.content-container {
+  /* Calculate hPadding based on desired content-width */
+  padding-left: calc((100vw-var(--content-width))/2);
+  padding-right: calc((100vw-var(--content-width))/2);
+  position: relative;
   z-index: 500;
 
   display: inline-flex;
@@ -149,15 +152,20 @@ body {
 }
 
 .center-panel {
-  background-color: var(--section-background-color);
-  height: 100vh;
+  height: 100%;
   width: var(--centerPanel-width);
   margin-left: var(--margin);
   margin-right: var(--margin);
 }
 
+.center-panel .section {
+  height: 500px;
+}
+
 .left-side-panel {
   flex: var(--leftSidePanel-flex);
+  margin: 0;
+  padding: 0;
 }
 
 .left-side-panel .section {
@@ -172,9 +180,9 @@ body {
 .left-side-panel img {
   --profileImage-width: calc(var(--leftSidePanel-width)*0.65);
 
-  border: solid 2px darkgray;
   border-radius: calc(var(--profileImage-width) / 2);
-  box-shadow: 0px 0px 5px darkgray;
+  border: 1px solid #3338;
+  //box-shadow: 0px 0px 5px black;
 
   height: var(--profileImage-width);
   width: var(--profileImage-width);
@@ -189,15 +197,61 @@ body {
   text-align: center;
 }
 
+.profile-link {
+  width: 100%;
+  //  padding: 4px 2px;
+  //display: inline-flex;
+  flex-direction: row;
+}
+
+/*.profile-link svg {
+  height: 30px;
+  width: 30px;
+  padding: 2px 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile-link a {
+  background-color: var(--dark-background-color);
+  color: #ddd;
+  border-radius: 3px;
+
+  height: 25px;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height: 25px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.profile-link a:hover {
+  background-color: #333;
+}*/
+
+/*.profile-links a {
+  width: 100%;
+  padding: 4px 2px;
+  text-align: left;
+  display: inline-block;
+}
+.profile-links a svg {
+  display: inline-block;
+  vertical-align: middle;
+}*/
+
 .right-side-panel {
   height: 100vh;
   width: var(--rightSidePanel-width);
+  margin: 0;
+  padding: 0;
 }
 
 .project-highlight {
   height: 300px;
   width: 100%;
-  margin-bottom: var(--margin);
 }
 
 .project-highlight h4 {
@@ -217,8 +271,11 @@ body {
 
 .section {
   background-color: var(--section-background-color);
+
   height: 100%;
   width: 100%;
+  margin: var(--margin) 0;
+
   box-shadow: 0px 2px 5px gray;
 
   font-family: var(--font-family);
