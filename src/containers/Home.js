@@ -3,7 +3,7 @@ import {
   Header,
   LandingHeader,
   LeftSidePanel,
-  Content,
+  CenterPanel,
   RightSidePanel
 } from '.';
 
@@ -14,12 +14,10 @@ class Home extends Component {
         <Header />
         <div style={{ textAlign: 'center' }}>
           <LandingHeader />
-          <div className="page">
-            <div className="content-container">
-              <LeftSidePanel />
-              <Content />
-              <RightSidePanel />
-            </div>
+          <div className="content-container">
+            <LeftSidePanel />
+            <CenterPanel />
+            <RightSidePanel />
           </div>
         </div>
       </div>
