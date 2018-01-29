@@ -1,26 +1,26 @@
 :root {
-  --section-background-color: #cccc;
-  --dark-background-color: #111e;
+  --section-background-color: #dddf;
+  --background-color: #ccce; //#111e;
   --header-height: 60px;
-  --content-width: 1050px;
-  --centerPanel-width: 575px;
-  --leftSidePanel-flex: 1;
+  --content-width: 1100px;
+  --centerPanel-width: 600px;
+  --leftSidePanel-flex: 5;
   --leftSidePanel-width: calc(
      (var(--content-width) - var(--centerPanel-width) - 2*var(--margin)) *var(
         --leftSidePanel-flex
       ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
   );
-  --rightSidePanel-flex: 1;
+  --rightSidePanel-flex: 6;
   --rightSidePanel-width: calc(
      (var(--content-width) - var(--centerPanel-width) - 2*var(--margin)) *var(
         --rightSidePanel-flex
       ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
   );
 
-  --title-color: black;
-  --text-color: #252525;
+  --title-color: #333; //#222;
+  --text-color: #555;
   --font-family: 'Arial';
-  --font-size: 16px;
+  --font-size: 14px;
   --margin: 15px;
 }
 
@@ -42,6 +42,11 @@
     main-container
 */
 
+h3 {
+  font-family: 'Trebuchet MS';
+  text-transform: uppercase;
+}
+
 body {
   background: linear-gradient(to bottom right, whitesmoke, #ddd);
   //background-color: #223;
@@ -50,12 +55,14 @@ body {
 }
 
 .header {
-  background-color: var(--dark-background-color);
+  //background-color: #111e;
+  background: linear-gradient(20deg, #000, #111, #333e, #222d, #111, #000);
   height: var(--header-height);
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 1000;
+  box-shadow: 0px 0px 5px #333;
 }
 
 .navbar {
@@ -131,12 +138,14 @@ body {
 }
 
 .main-container {
-  background-color: var(--dark-background-color);
+  //background-color: var(--background-color);
+  background: linear-gradient(45deg, #cccd, #bbbc, #999c, #aaac, #bbbc, #cccd);
   height: 100%;
   width: 100vw;
   min-width: var(--content-width);
   position: relative;
   top: 100vh;
+  box-shadow: 0px 0px 5px #333;
 }
 
 /* Manages LeftSidePanel, Content & RightSidePanel */
@@ -146,6 +155,8 @@ body {
   padding-right: calc((100vw-var(--content-width))/2);
   position: relative;
   z-index: 500;
+
+  margin-top: var(--margin);
 
   display: inline-flex;
   flex-direction: row;
@@ -178,13 +189,13 @@ body {
 
 .profile-content {
   width: calc(var(--leftSidePanel-width)*0.8);
-  margin: var(--margin);
+  //margin: var(--margin);
   flex: 1;
   text-align: center;
 }
 
 .profile-content img {
-  --profileImage-width: calc(var(--leftSidePanel-width)*0.65);
+  --profileImage-width: calc(var(--leftSidePanel-width)*0.55);
 
   border-radius: calc(var(--profileImage-width) / 2);
   border: 1px solid #3338;
@@ -196,7 +207,7 @@ body {
 }
 
 .profile-summary {
-  margin: var(--margin) 0;
+  margin: 20px;
 }
 
 .profile-link {
@@ -221,7 +232,7 @@ body {
 
   width: 100%;
   margin-left: 10px;
-  line-height: 30px;
+  line-height: 28px;
 
   text-decoration: none;
   text-transform: uppercase;
@@ -232,38 +243,52 @@ body {
 }
 
 .right-side-panel {
-  height: 100vh;
+  flex: var(--rightSidePanel-flex);
+}
+
+.right-side-panel .section {
   width: var(--rightSidePanel-width);
-  margin: 0;
-  padding: 0;
+  padding-bottom: var(--margin);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-projects-header {
+  color: var(--title-color);
 }
 
 .project-highlight {
-  height: 300px;
-  width: 100%;
+  width: calc(var(--rightSidePanel-width)*0.8);
+  //margin: var(--margin);
+  text-align: center;
 }
 
 .project-highlight h4 {
   color: var(--title-color);
   text-transform: uppercase;
   font-family: var(--font-family);
-  margin: 0 var(--margin);
+  margin: 0;
   padding: var(--margin);
 }
 
 .project-highlight img {
-  margin: var(--margin);
   --projectImage-width: calc(var(--rightSidePanel-width)*0.5);
   height: var(--projectImage-width);
   width: var(--projectImage-width);
+  border-radius: calc(var(--projectImage-width)/10);
+  overflow: hidden;
+}
+
+.project-highlight p {
+  margin: var(--margin);
 }
 
 .section {
   background-color: var(--section-background-color);
-
-  height: 100%;
   width: 100%;
-  margin: var(--margin) 0;
+  margin: 1px 0;
 
   box-shadow: 0px 2px 5px gray;
 
