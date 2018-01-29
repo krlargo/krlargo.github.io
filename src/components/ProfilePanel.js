@@ -8,7 +8,7 @@ class ProfilePanel extends Component {
     this.state = {
       profileImageURL: './src/images/profile-pictures/napa.jpg',
       profileSummary:
-        "I'm a Computer Science graduate from UC Davis looking to land a software engineering role in the Bay Area."
+        "I'm a Computer Science graduate from UC Davis actively searching for a Software Engineering position in the Bay Area."
     };
   }
 
@@ -17,26 +17,22 @@ class ProfilePanel extends Component {
     const iconColor = '#333';
 
     return (
-      <div className="profile-panel">
-        <div className="section">
-          <div className="profile-content">
-            <img src={profileImageURL} />
-            <div className="profile-summary">{profileSummary}</div>
-            <div className="profile-link">
-              <AppStoreIcon color={iconColor} />
-              <a href="https://itunes.apple.com/us/developer/kevin-largo/id1269350192?mt=8">
-                App Store Link
-              </a>
-            </div>
-            <div className="profile-link">
-              <GitHubIcon color={iconColor} />
-              <a href="https://github.com/krlargo">GitHub</a>
-            </div>
-            <div className="profile-link">
-              <LinkedInIcon color={iconColor} />
-              <a href="https://www.linkedin.com/in/kevinlargo">LinkedIn</a>
-            </div>
-          </div>
+      <div className="section profile-content">
+        <img src={profileImageURL} />
+        <div className="profile-summary">{profileSummary}</div>
+        <div className="profile-link">
+          <AppStoreIcon color={iconColor} />
+          <a href="https://itunes.apple.com/us/developer/kevin-largo/id1269350192?mt=8">
+            App Store Link
+          </a>
+        </div>
+        <div className="profile-link">
+          <GitHubIcon color={iconColor} />
+          <a href="https://github.com/krlargo">GitHub</a>
+        </div>
+        <div className="profile-link">
+          <LinkedInIcon color={iconColor} />
+          <a href="https://www.linkedin.com/in/kevinlargo">LinkedIn</a>
         </div>
       </div>
     );
