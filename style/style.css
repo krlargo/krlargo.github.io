@@ -1,17 +1,18 @@
 :root {
-  --section-background-color: #aaaaaa55;
+  --section-background-color: #cccc;
+  --dark-background-color: #111e;
   --header-height: 60px;
-  --page-width: 1010px;
-  --content-width: 500px;
+  --content-width: 1010px;
+  --centerPanel-width: 500px;
   --leftSidePanel-flex: 1;
   --leftSidePanel-width: calc(
-     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
+     (var(--content-width) - var(--centerPanel-width) - 2*var(--margin)) *var(
         --leftSidePanel-flex
       ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
   );
   --rightSidePanel-flex: 1;
   --rightSidePanel-width: calc(
-     (var(--page-width) - var(--content-width) - 2*var(--margin)) *var(
+     (var(--content-width) - var(--centerPanel-width) - 2*var(--margin)) *var(
         --rightSidePanel-flex
       ) /(var(--leftSidePanel-flex) + var(--rightSidePanel-flex))
   );
@@ -23,14 +24,33 @@
   --margin: 12px;
 }
 
+/*
+ __________________
+|_header___________|
+|                  |
+| landing-header   |
+|__________________|
+|  ______________  |
+| |   |      |   | |
+| |LSP|CenPnl|RSP| |
+| |___|______|___| |
+|__________________|
+
+| '------,-------' |
+|    contents      |
+'--------,---------'
+       page
+*/
+
 body {
-  background-color: whitesmoke;
-  margin: 0; // Removes default margin'
+  background: linear-gradient(to bottom right, whitesmoke, #ddd);
+  //background-color: #223;
+  margin: 0 auto; // Removes default margin
   padding: 0;
 }
 
 .header {
-  background-color: black;
+  background-color: var(--dark-background-color);
   height: var(--header-height);
   width: 100%;
   position: fixed;
@@ -40,7 +60,7 @@ body {
 
 .navbar {
   position: absolute;
-  right: 0;
+  right: var(--margin);
   bottom: 0;
 }
 
@@ -49,7 +69,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: black;
+  background-color: transparent;
 }
 
 .navbar li {
@@ -59,17 +79,18 @@ body {
 }
 
 .navbar li a {
-  width: 60px;
   display: block;
-  color: white;
+  color: #ddd;
   text-align: center;
   padding: 10px;
   text-decoration: none;
   text-transform: uppercase;
+  border-bottom: 2px solid transparent;
 }
 
 .navbar li a:hover {
   background-color: #333;
+  border-bottom: 2px solid white;
 }
 
 .landing-header {
@@ -78,11 +99,12 @@ body {
   background-position: center;
 
   /* Initially take up full screen */
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   width: 100vw;
-  position: relative;
-  top: var(--header-height);
-  z-index: 750;
+  position: fixed;
+  z-index: -1000;
+  margin: 0;
+  padding: 0;
 
   overflow: hidden;
   display: flex;
@@ -96,30 +118,40 @@ body {
   color: white;
   font-family: 'Courier New';
   font-size: 40px;
-  height: 270px;
-  width: 695px;
-  /* Keep text from wrapping on window resize */
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: clip;
+
+  --height: 270px;
+  --width: 695px;
+  height: var(--height);
+  width: var(--width);
+  position: absolute;
+  margin: calc((100vh - var(--height))/2) calc((100vw - var(--width))/2);
+
+  white-space: nowrap; /* Keep text from wrapping on window resize */
 }
 
 /* Manages LeftSidePanel, Content & RightSidePanel */
 .content-container {
+  background-color: var(--dark-background-color);
   height: 100%;
-  width: var(--page-width);
-  position: sticky;
-  margin-top: calc(var(--header-height) + var(--margin));
+  width: 100vw;
+  padding-top: var(--margin);
+
+  /* Calculate hPadding based on desired content-width */
+  //padding-left: calc((100vw-var(--content-width))/2);
+  //padding-right: calc((100vw-var(--content-width))/2);
+  position: relative;
+  top: 100vh;
+  z-index: 500;
 
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.content {
+.center-panel {
   background-color: var(--section-background-color);
   height: 100vh;
-  width: var(--content-width);
+  width: var(--centerPanel-width);
   margin-left: var(--margin);
   margin-right: var(--margin);
 }
@@ -146,7 +178,7 @@ body {
 
   height: var(--profileImage-width);
   width: var(--profileImage-width);
-  margin: var(--margin);
+  //margin: var(--margin);
 }
 
 .profile-content {
