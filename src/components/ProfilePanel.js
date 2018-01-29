@@ -34,3 +34,5 @@ class ProfilePanel extends Component {
     );
   }
 }
+
+export default ProfilePanel;
