@@ -28,14 +28,12 @@ class ProjectHighlight extends Component {
     } = this.props.project;
 
     return (
-      <div className="project-highlight">
-        <div className="section">
-          <h4>{name}</h4>
-          <img src={imageURL} />
-          <p>{description}</p>
-          {this.renderHighlights(highlights)}
-          <ul>{this.renderSkills(technicalSkills)}</ul>
-        </div>
+      <div className="section project-highlight">
+        <h4>{name}</h4>
+        <img src={imageURL} />
+        <p>{description}</p>
+        {this.renderHighlights(highlights)}
+        <ul>{this.renderSkills(technicalSkills)}</ul>
       </div>
     );
   }
