@@ -21,7 +21,7 @@ class ProjectHighlight extends Component {
           <h4>{name}</h4>
           <img src={imageURL} />
           <p>{description}</p>
-        </div>{' '}
+        </div>
       </div>
     );
   }
