@@ -14,10 +14,12 @@ class Home extends Component {
         <Header />
         <div style={{ textAlign: 'center' }}>
           <LandingHeader />
-          <div className="content-container">
-            <LeftSidePanel />
-            <CenterPanel />
-            <RightSidePanel />
+          <div className="main-container">
+            <div className="content-container">
+              <LeftSidePanel />
+              <CenterPanel />
+              <RightSidePanel />
+            </div>
           </div>
         </div>
       </div>
