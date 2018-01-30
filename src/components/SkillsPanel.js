@@ -105,6 +105,8 @@ class SkillsPanel extends Component {
         {objectKeys.map((skill, index) => {
           const backgroundColor =
             this.state.isHovered == skill ? hoverColor : buttonColor;
+          const hasChildren = Object.keys(object[skill]).length != 0;
+
           return (
             <div key={skill}>
               <li
@@ -113,12 +115,14 @@ class SkillsPanel extends Component {
                   display[skill] = !display[skill]; // Toggle current display value
                   this.setState({ display });
                 }}
-                onMouseOver={() => this.setState({ isHovered: skill })}
+                onMouseOver={() => {
+                  if (hasChildren) this.setState({ isHovered: skill });
+                }}
                 onMouseLeave={() => this.setState({ isHovered: null })}
               >
                 {skill}
                 <div style={{ float: 'right', fontSize: '8px' }}>
-                  {Object.keys(object[skill]).length == 0 ? '' : ' ▼'}
+                  {hasChildren ? '▼' : ''}
                 </div>
               </li>
               {this.renderSkills(object[skill], skill, depth + 1)}
