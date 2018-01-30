@@ -279,6 +279,10 @@ body {
   transition: 0.25s;
 }
 
+.technical-skills ul:last-of-type {
+  margin-bottom: -1px;
+}
+
 .technical-skills ul li {
   position: relative;
   margin-top: -1px;
