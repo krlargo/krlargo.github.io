@@ -183,8 +183,52 @@ body {
   margin-right: var(--margin);
 }
 
-.center-panel .section {
-  height: 500px;
+.post {
+  padding: 10px 20px;
+}
+
+/* Post title */
+.post h3 {
+  left: 20px;
+  line-height: 30px;
+  text-align: left;
+  border-bottom: 1px solid darkgray;
+  font-size: 20px;
+}
+
+.post h3::first-letter {
+  font-size: 24px;
+}
+
+.post-header {
+  height: 25px;
+  margin: 10px;
+}
+
+.post h4 {
+  line-height: 25px;
+  font-size: 18px;
+  padding: 0;
+}
+
+.post p {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.post ul {
+  margin: 10px;
+  font-size: 18px;
+  text-align: left;
+  list-style-type: square;
+}
+
+.subpost {
+  border-bottom: 1px solid darkgray;
+}
+
+.subpost:last-child {
+  border-bottom: none;
 }
 
 .left-side-panel {
@@ -401,7 +445,8 @@ body {
 .section {
   background-color: var(--section-background-color);
   width: 100%;
-  margin: 1px 0;
+  //margin: 1px 0;
+  margin: var(--margin) 0;
 
   box-shadow: 0px 2px 5px gray;
 
