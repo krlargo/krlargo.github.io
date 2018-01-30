@@ -45,6 +45,7 @@
 h3 {
   font-family: 'Trebuchet MS';
   text-transform: uppercase;
+  margin: 0;
 }
 
 body {
@@ -56,7 +57,7 @@ body {
 
 .header {
   //background-color: #111e;
-  background: linear-gradient(20deg, #000, #111, #333e, #222d, #111, #000);
+  background: linear-gradient(20deg, #000, #111, #333, #333, #222, #111, #000);
   height: var(--header-height);
   width: 100%;
   position: fixed;
@@ -139,7 +140,7 @@ body {
 
 .main-container {
   //background-color: var(--background-color);
-  background: linear-gradient(45deg, #cccd, #bbbc, #999c, #aaac, #bbbc, #cccd);
+  background: linear-gradient(45deg, #cccf, #bbbe, #999e, #aaae, #bbbe, #cccf);
   height: 100%;
   width: 100vw;
   min-width: var(--content-width);
@@ -242,6 +243,15 @@ body {
   background-color: #666;
 }
 
+.icon-container {
+  position: relative;
+  width: 90%;
+}
+
+.icon-container h3 {
+  margin-bottom: 10px;
+}
+
 .right-side-panel {
   flex: var(--rightSidePanel-flex);
 }
@@ -291,6 +301,8 @@ body {
   margin: 1px 0;
 
   box-shadow: 0px 2px 5px gray;
+
+  padding-top: var(--margin);
 
   font-family: var(--font-family);
   font-size: var(--font-size);
