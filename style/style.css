@@ -323,16 +323,12 @@ body {
   align-items: center;
 }
 
-.featured-projects-header {
-  color: var(--title-color);
-}
-
-.project-highlight {
+.featured-project {
   width: calc(var(--rightSidePanel-width)*0.8);
   text-align: center;
 }
 
-.project-highlight img {
+.featured-project img {
   --projectImage-width: calc(var(--rightSidePanel-width)*0.4);
   height: var(--projectImage-width);
   width: var(--projectImage-width);
@@ -340,23 +336,28 @@ body {
   overflow: hidden;
 }
 
-.project-highlight-description {
+.featured-project-description {
   margin: 10px 0;
   text-align: justify;
 }
 
-.project-highlight-details {
+/* Container for highlights & technologies */
+.featured-project-details {
+  overflow: hidden;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
 }
 
-.project-highlight-subtitle {
+.featured-project-subtitle {
   text-transform: uppercase;
-  margin: 3px 0;
   font-size: 10px;
   font-weight: bold;
   text-align: left;
 }
 
-.project-highlights-list {
+.featured-project-highlights-ul {
   margin: 0 0 10px var(--margin);
   padding: 0;
   list-style-position: outside;
@@ -365,9 +366,9 @@ body {
   text-align: left;
 }
 
-.project-highlight-technologies {
-  //background-color: #eeef;
+.featured-project-technologies {
   font-size: 12px;
+  text-align: left;
 }
 
 .section {
