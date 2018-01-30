@@ -355,7 +355,7 @@ body {
   border-radius: var(--button-corner-radius);
   border: 1px solid var(--button-color);
   min-height: var(--button-height);
-  width: 100%;
+  //width: 100%;
   overflow: hidden;
 }
 
@@ -384,7 +384,7 @@ body {
 }
 
 .featured-project-highlights-ul {
-  margin: 0 0 10px var(--margin);
+  margin: 0 0 3px var(--margin);
   padding: 0 5px;
   list-style-position: outside;
   list-style-type: square;

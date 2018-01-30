@@ -45,6 +45,7 @@ class SkillsPanel extends Component {
 
     this.state = {
       containerWidth: 0,
+      cellHeight: 0,
       technicalSkills,
       display: {
         TechnicalSkills: true
@@ -53,8 +54,10 @@ class SkillsPanel extends Component {
   }
 
   componentDidMount() {
-    const rect = this.refs.technicalSkills.getBoundingClientRect();
-    this.setState({ containerWidth: rect.width });
+    const { technicalSkills, GeneralRef } = this.refs;
+    const containerWidth = technicalSkills.getBoundingClientRect().width;
+    const cellHeight = GeneralRef.getBoundingClientRect().height;
+    this.setState({ containerWidth, cellHeight });
   }
 
   // Recursively calculate current skill's table height, accounting for child tables
@@ -87,7 +90,7 @@ class SkillsPanel extends Component {
   renderSkills(object, key, depth) {
     const objectKeys = Object.keys(object);
     const cellCount = objectKeys.length;
-    const cellHeight = 30 + 1;
+    const cellHeight = this.state.cellHeight - 1; // Account for border width
     const height = this.calculateTableHeight(object, key) * cellHeight;
     const rootButtonColorValue = 51;
 
@@ -110,6 +113,7 @@ class SkillsPanel extends Component {
           return (
             <div key={skill}>
               <li
+                ref={`${skill}Ref`}
                 style={{ backgroundColor }}
                 onClick={() => {
                   display[skill] = !display[skill]; // Toggle current display value
