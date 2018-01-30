@@ -7,22 +7,17 @@ class ProjectHighlight extends Component {
   }
 
   componentDidMount() {
-    // Calculate expandedDetailHeight for dropdown transition
-    /*          ________________________  _
-               | highlightsSubtitle     |  |
-               |  - higlights           |  |
-      details: | highlightsMarginBottom |   > calculatedHeight
-               | technologiesSubtitle   |  |
-               |   tech, tech, tech     | _|
-               '------------------------'
-    */
-
     const {
       highlightsSubtitle,
       highlights,
       technologiesSubtitle,
       technologies
     } = this.refs;
+
+    /*const detailsContainerStyle = window.getComputedStyle(detailsContainer);
+    const detailsContainerPaddingVertical =
+      parseInt(detailsContainerStyle.getPropertyValue('padding-top')) +
+      parseInt(detailsContainerStyle.getPropertyValue('padding-bottom'));*/
 
     const highlightsSubtitleHeight = highlightsSubtitle
       ? highlightsSubtitle.getBoundingClientRect().height
@@ -64,26 +59,21 @@ class ProjectHighlight extends Component {
     ) : null;
   }
 
-  render() {
-    const {
-      name,
-      description,
-      highlights,
-      technologiesUsed,
-      imageURL
-    } = this.props.project;
-
+  renderDetails() {
+    const { highlights, technologiesUsed } = this.props.project;
     const { showDetails, expandedDetailHeight } = this.state;
-
+    const buttonText = 'Show Details';
     return (
-      <div className="section">
-        <div className="featured-project">
-          <h4>{name}</h4>
-          <img
-            src={imageURL}
-            onClick={() => this.setState({ showDetails: !showDetails })}
-          />
-          <div className="featured-project-description">{description}</div>
+      <div>
+        <div
+          className="featured-project-details-button"
+          onClick={() => this.setState({ showDetails: !showDetails })}
+          onMouseOver={() => this.setState({ isHovered: skill })}
+          onMouseLeave={() => this.setState({ isHovered: null })}
+        >
+          <div className="featured-project-details-button-text">
+            {buttonText}
+          </div>
           <div
             ref="details"
             className="featured-project-details"
@@ -100,6 +90,25 @@ class ProjectHighlight extends Component {
               {technologiesUsed.join(', ')}
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { name, description, imageURL } = this.props.project;
+    const { showDetails } = this.state;
+
+    return (
+      <div className="section">
+        <div className="featured-project">
+          <h4>{name}</h4>
+          <img
+            src={imageURL}
+            onClick={() => this.setState({ showDetails: !showDetails })}
+          />
+          <div className="featured-project-description">{description}</div>
+          {this.renderDetails()}
         </div>
       </div>
     );
