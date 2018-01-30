@@ -84,34 +84,44 @@ class SkillsPanel extends Component {
   }
 
   // Recusrively render tables, accounting for child tables
-  renderSkills(object, key, isTopLevel = false) {
+  renderSkills(object, key, depth) {
     const objectKeys = Object.keys(object);
     const cellCount = objectKeys.length;
     const cellHeight = 30 + 1;
     const height = this.calculateTableHeight(object, key) * cellHeight;
+    const rootButtonColorValue = 51;
 
     const display = this.state.display;
+
+    // Use dynamic background coloring for varying nested list colors
+    const buttonColorValue = rootButtonColorValue + 45 * depth;
+    const buttonColor = `rgb(${buttonColorValue}, ${buttonColorValue}, ${buttonColorValue})`;
+    const hoverColor = `rgb(${buttonColorValue +
+      rootButtonColorValue}, ${buttonColorValue +
+      rootButtonColorValue}, ${buttonColorValue + rootButtonColorValue})`;
 
     return (
       <ul style={{ height, ...this.transitionDuration(0.25) }}>
         {objectKeys.map((skill, index) => {
-          console.log(
-            skill + 'OBJECT[SKILL]: ' + JSON.stringify(object[skill])
-          );
+          const backgroundColor =
+            this.state.isHovered == skill ? hoverColor : buttonColor;
           return (
-            <div>
+            <div key={skill}>
               <li
+                style={{ backgroundColor }}
                 onClick={() => {
                   display[skill] = !display[skill]; // Toggle current display value
                   this.setState({ display });
                 }}
+                onMouseOver={() => this.setState({ isHovered: skill })}
+                onMouseLeave={() => this.setState({ isHovered: null })}
               >
                 {skill}
                 <div style={{ float: 'right', fontSize: '8px' }}>
                   {Object.keys(object[skill]).length == 0 ? '' : ' ▼'}
                 </div>
               </li>
-              {this.renderSkills(object[skill], skill)}
+              {this.renderSkills(object[skill], skill, depth + 1)}
             </div>
           );
         })}
@@ -143,7 +153,7 @@ class SkillsPanel extends Component {
             ))}
           </div>
           <div className="technical-skills-list-container">
-            {this.renderSkills(technicalSkills, 'TechnicalSkills', true)}
+            {this.renderSkills(technicalSkills, 'TechnicalSkills', 0)}
           </div>
         </div>
       </div>
