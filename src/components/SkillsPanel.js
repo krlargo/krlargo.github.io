@@ -45,10 +45,10 @@ class SkillsPanel extends Component {
 
     this.state = {
       containerWidth: 0,
-      displayGeneral: false,
-      displayWeb: false,
-      displayMobile: false,
-      displayiOS: false
+      technicalSkills,
+      display: {
+        TechnicalSkills: true
+      }
     };
   }
 
@@ -57,14 +57,55 @@ class SkillsPanel extends Component {
     this.setState({ containerWidth: rect.width });
   }
 
+  // Recursively calculate current skill's table height, accounting for child tables
+  calculateTableHeight(object, key) {
+    if (!this.state.display[key]) return 0;
+
+    const objectKeys = Object.keys(object);
+    const childCount = objectKeys.length;
+    let count = childCount;
+
+    const sum = objectKeys.reduce((sum, currentKey) => {
+      const currentObject = object[currentKey];
+      return sum + this.calculateTableHeight(currentObject, currentKey);
+    }, 0);
+
+    return sum + count;
+  }
+
+  // Recusrively render tables, accounting for child tables
+  renderSkills(object, key, isTopLevel = false) {
+    const objectKeys = Object.keys(object);
+    const cellCount = objectKeys.length;
+    const cellHeight = 30 + 1;
+    const height = this.calculateTableHeight(object, key) * cellHeight;
+
+    const display = this.state.display;
+
+    return (
+      <ul style={{ height }}>
+        {objectKeys.map((skill, index) => {
+          return (
+            <div>
+              <li
+                onClick={() => {
+                  display[skill] = !display[skill]; // Toggle current display value
+                  this.setState({ display });
+                }}
+              >
+                {skill}
+              </li>
+              {this.renderSkills(object[skill], skill)}
+            </div>
+          );
+        })}
+      </ul>
+    );
+  }
+
   render() {
-    const { containerWidth } = this.state;
-    const {
-      displayGeneral,
-      displayWeb,
-      displayMobile,
-      displayiOS
-    } = this.state;
+    const { containerWidth, technicalSkills } = this.state;
+    const { display } = this.state;
     const techIcons = [
       SwiftIcon,
       CppIcon,
@@ -85,62 +126,11 @@ class SkillsPanel extends Component {
               <Icon width={iconSize} height={iconSize} key={index} />
             ))}
           </div>
-          <div className="technical-skills-list-container">
-            <ul>
-              <li
-                onClick={() =>
-                  this.setState({ displayGeneral: !displayGeneral })
-                }
-              >
-                General
-              </li>
-              <ul
-                style={{
-                  height: displayGeneral ? '90px' : '0'
-                }}
-              >
-                <li>C/C++</li>
-                <li>Java</li>
-                <li>GitHub</li>
-              </ul>
-              <li onClick={() => this.setState({ displayWeb: !displayWeb })}>
-                Web
-              </li>
-              <ul style={{ height: displayWeb ? '180px' : '0' }}>
-                <li>React/Redux</li>
-                <li>Node</li>
-                <li>Express</li>
-                <li>Firebase</li>
-                <li>SQL</li>
-                <li>NoSQL</li>
-              </ul>
-              <li
-                onClick={() => this.setState({ displayMobile: !displayMobile })}
-              >
-                Mobile
-              </li>
-              <ul
-                style={{
-                  height: displayMobile ? (displayiOS ? '330px' : '60px') : '0'
-                }}
-              >
-                <li onClick={() => this.setState({ displayiOS: !displayiOS })}>
-                  iOS
-                </li>
-                <ul style={{ height: displayiOS ? '270px' : '0' }}>
-                  <li>Swift</li>
-                  <li>Objective-C</li>
-                  <li>Xcode</li>
-                  <li>iOS SDK</li>
-                  <li>Cocoa Touch</li>
-                  <li>Core Data</li>
-                  <li>Storyboard</li>
-                  <li>Interface Builder</li>
-                  <li>XCTesting</li>
-                </ul>
-                <li>React Native</li>
-              </ul>
-            </ul>
+          <div
+            className="technical-skills-list-container"
+            ref={display ? '' : ''}
+          >
+            {this.renderSkills(technicalSkills, 'TechnicalSkills', true)}
           </div>
         </div>
       </div>
