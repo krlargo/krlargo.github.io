@@ -73,6 +73,16 @@ class SkillsPanel extends Component {
     return sum + count;
   }
 
+  // Adds styling for all transitioning
+  transitionDuration(duration) {
+    return {
+      '-webkit-transition': `${duration}s`,
+      '-moz-transition': `${duration}s`,
+      '-o-transition': `${duration}s`,
+      transition: `${duration}s`
+    };
+  }
+
   // Recusrively render tables, accounting for child tables
   renderSkills(object, key, isTopLevel = false) {
     const objectKeys = Object.keys(object);
@@ -83,8 +93,11 @@ class SkillsPanel extends Component {
     const display = this.state.display;
 
     return (
-      <ul style={{ height }}>
+      <ul style={{ height, ...this.transitionDuration(0.25) }}>
         {objectKeys.map((skill, index) => {
+          console.log(
+            skill + 'OBJECT[SKILL]: ' + JSON.stringify(object[skill])
+          );
           return (
             <div>
               <li
@@ -94,6 +107,9 @@ class SkillsPanel extends Component {
                 }}
               >
                 {skill}
+                <div style={{ float: 'right', fontSize: '8px' }}>
+                  {Object.keys(object[skill]).length == 0 ? '' : ' ▼'}
+                </div>
               </li>
               {this.renderSkills(object[skill], skill)}
             </div>
