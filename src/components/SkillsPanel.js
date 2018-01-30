@@ -126,10 +126,7 @@ class SkillsPanel extends Component {
               <Icon width={iconSize} height={iconSize} key={index} />
             ))}
           </div>
-          <div
-            className="technical-skills-list-container"
-            ref={display ? '' : ''}
-          >
+          <div className="technical-skills-list-container">
             {this.renderSkills(technicalSkills, 'TechnicalSkills', true)}
           </div>
         </div>
