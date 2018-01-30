@@ -10,7 +10,7 @@ class RightSidePanel extends Component {
           name: 'CodeWords',
           description: 'A digital remake of the popular board game, CodeNames',
           highlights: ['1,000+ downloads on the App Store'],
-          technicalSkills: [
+          technologiesUsed: [
             'Native iOS SDK',
             'In-App Purchases',
             'Firebase Authorization',
@@ -25,7 +25,7 @@ class RightSidePanel extends Component {
           description:
             'An iOS application that allows users to create and share checklists with realtime editing.',
           highlights: [],
-          technicalSkills: [
+          technologiesUsed: [
             'Native iOS SDK',
             'Firebase Authorization',
             'Firebase Database',
@@ -39,7 +39,7 @@ class RightSidePanel extends Component {
           description:
             'An iOS application that uses a spreadsheet interface to make it easy to split shared items on dinner bills.',
           highlights: ['2,000+ downloads on the App Store'],
-          technicalSkills: [
+          technologiesUsed: [
             'Native iOS SDK',
             'In-App Purchases',
             'CoreData',
