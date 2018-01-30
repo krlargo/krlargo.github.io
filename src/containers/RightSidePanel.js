@@ -13,7 +13,6 @@ class RightSidePanel extends Component {
           technologiesUsed: [
             'Native iOS SDK',
             'In-App Purchases',
-            'Firebase Authorization',
             'Firebase Database',
             'Google AdMob'
           ],

@@ -57,7 +57,7 @@ h4 {
 }
 
 h4 {
-  padding-bottom: var(--margin);
+  padding-bottom: 10px;
 }
 
 body {
@@ -333,15 +333,41 @@ body {
 }
 
 .project-highlight img {
-  --projectImage-width: calc(var(--rightSidePanel-width)*0.5);
+  --projectImage-width: calc(var(--rightSidePanel-width)*0.4);
   height: var(--projectImage-width);
   width: var(--projectImage-width);
   border-radius: calc(var(--projectImage-width)/10);
   overflow: hidden;
 }
 
-.project-highlight p {
-  margin: var(--margin);
+.project-highlight-description {
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.project-highlight-details {
+}
+
+.project-highlight-subtitle {
+  text-transform: uppercase;
+  margin: 3px 0;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.project-highlights-list {
+  margin: 0 0 10px var(--margin);
+  padding: 0;
+  list-style-position: outside;
+  list-style-type: square;
+  font-size: 12px;
+  text-align: left;
+}
+
+.project-highlight-technologies {
+  //background-color: #eeef;
+  font-size: 12px;
 }
 
 .section {

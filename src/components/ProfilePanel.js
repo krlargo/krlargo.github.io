@@ -8,7 +8,7 @@ class ProfilePanel extends Component {
     this.state = {
       profileImageURL: './src/images/profile-pictures/napa.jpg',
       profileSummary:
-        "I'm a Computer Science graduate from UC Davis actively searching for a Software Engineering position in the Bay Area."
+        "I'm a 2017 Computer Science graduate from UC Davis actively searching for a Software Engineering position in the Bay Area."
     };
   }
 
