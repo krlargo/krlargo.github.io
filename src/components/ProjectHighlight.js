@@ -68,11 +68,9 @@ class ProjectHighlight extends Component {
         <div
           className="featured-project-details-button"
           onClick={() => this.setState({ showDetails: !showDetails })}
-          onMouseOver={() => this.setState({ isHovered: skill })}
-          onMouseLeave={() => this.setState({ isHovered: null })}
         >
           <div className="featured-project-details-button-text">
-            {buttonText}
+            {showDetails ? 'Hide' : 'Details'}
           </div>
           <div
             ref="details"
