@@ -163,20 +163,58 @@ body {
 
 /* Manages LeftSidePanel, Content & RightSidePanel */
 .content-container {
-  /* Calculate hPadding based on desired content-width */
-  padding-left: calc((100vw-var(--content-width))/2);
-  padding-right: calc((100vw-var(--content-width))/2);
+  width: var(--content-width);
+
+  //  margin-top: var(--margin);
+
   position: relative;
   z-index: 500;
-
-  margin-top: var(--margin);
 
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
 }
 
+/*
+            LSP        CP         RSP
+          ,--'---,------'------,---'--,
+          ____________________________
+       _ | _____  ____________  _____ |  _
+      |  ||     ||            ||_____||  _'- Subsection
+Sect -|  ||     ||            ||     ||   |
+      '_ ||_____||            ||     ||   |- Subsection
+         |.-----.|            ||_____||  _'
+         ||     ||            |.-----.|
+
+          '--,--'
+          Section
+*/
+
+.section {
+  background-color: var(--section-background-color);
+  color: var(--text-color);
+
+  width: 100%;
+  margin: var(--margin) 0;
+
+  box-shadow: 0px 2px 5px gray;
+
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+.subsection {
+  background-color: #F006;
+  border-bottom: 1px solid darkgray;
+  padding: var(--margin);
+}
+
+.subsection:last-child {
+  border-bottom: none;
+}
+
 .center-panel {
+  background-color: green;
   height: 100%;
   width: var(--centerPanel-width);
   margin-left: var(--margin);
@@ -184,6 +222,7 @@ body {
 }
 
 .post {
+  background-color: #00F6;
   padding: 10px 20px;
 }
 
@@ -223,35 +262,20 @@ body {
   list-style-type: square;
 }
 
-.subpost {
-  border-bottom: 1px solid darkgray;
-}
-
-.subpost:last-child {
-  border-bottom: none;
-}
-
 .left-side-panel {
+  background-color: blue;
   flex: var(--leftSidePanel-flex);
 }
 
-.left-side-panel .section {
-  width: var(--leftSidePanel-width);
-  padding-bottom: var(--margin);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .profile {
-  width: 80%; //calc(var(--leftSidePanel-width)*0.8);
+  background-color: #00F6;
   flex: 1;
   text-align: center;
 }
 
 .profile img {
-  --profileImage-width: calc(var(--leftSidePanel-width)*0.55);
+  //--profileImage-width: calc(var(--leftSidePanel-width)*0.55);
+  --profileImage-width:
 
   border-radius: calc(var(--profileImage-width) / 2);
   border: 1px solid #3338;
@@ -267,7 +291,7 @@ body {
 }
 
 .profile-link {
-  width: calc(var(--leftSidePanel-width)*0.8);
+  width: 100%;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -299,8 +323,8 @@ body {
 }
 
 .technical-skills {
+  background-color: #00F6;
   position: relative;
-  width: 80%;
 }
 
 .technical-skills h3 {
@@ -311,23 +335,16 @@ body {
   margin: 10px 0;
 }
 
-.technical-skills-list-container {
-  //background-color: #eee;
-  width: 100%;
-  //border: 1px solid gray;
-}
-
 .technical-skills ul {
   /* Remove defaults */
   list-style-type: none;
   margin: 0;
   padding: 0;
 
-  width: calc(100% - 5px);
+  //width: calc(100% - 5px); /* Offset nested table */
+  //padding-left: 5px; /* Offset nested table */
   text-align: left;
-  //background-color: var(--button-color);
   color: var(--button-text-color);
-  padding-left: 5px;
   overflow: hidden;
 }
 
@@ -346,7 +363,7 @@ body {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   padding-left: 5px;
-  margin-left: -5px;
+  //margin-left: -5px; /* Offset nested table */
   padding-right: 5px;
 }
 
@@ -355,21 +372,12 @@ body {
 }
 
 .right-side-panel {
+  background-color: red;
   flex: var(--rightSidePanel-flex);
 }
 
-.right-side-panel .section {
-  width: var(--rightSidePanel-width);
-  padding-bottom: var(--margin);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .featured-project {
-  width: calc(var(--rightSidePanel-width)*0.8);
-  text-align: center;
+  background-color: maroon;
 }
 
 .featured-project img {
@@ -440,19 +448,4 @@ body {
   padding: 0 5px 3px 5px;
   font-size: 12px;
   text-align: left;
-}
-
-.section {
-  background-color: var(--section-background-color);
-  width: 100%;
-  //margin: 1px 0;
-  margin: var(--margin) 0;
-
-  box-shadow: 0px 2px 5px gray;
-
-  padding-top: var(--margin);
-
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  color: var(--text-color);
 }

@@ -53,7 +53,11 @@ class RightSidePanel extends Component {
 
   renderProjects(projects) {
     return projects.map(project => {
-      return <ProjectHighlight project={project} key={project.name} />;
+      return (
+        <div className="subsection">
+          <ProjectHighlight project={project} key={project.name} />
+        </div>
+      );
     });
   }
 
@@ -62,10 +66,12 @@ class RightSidePanel extends Component {
 
     return (
       <div className="right-side-panel">
-        <div className="section featured-projects-header">
-          <h3>Recent Projects</h3>
+        <div className="section">
+          <div className="subsection">
+            <h3>Recent Projects</h3>
+          </div>
+          {this.renderProjects(projects)}
         </div>
-        {this.renderProjects(projects)}
       </div>
     );
   }

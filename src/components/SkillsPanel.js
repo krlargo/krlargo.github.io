@@ -86,6 +86,13 @@ class SkillsPanel extends Component {
     };
   }
 
+  generateIndent(numSpaces) {
+    let array = [];
+    for (let i = 0; i < numSpaces; i++)
+      array.push(<span>&nbsp;&nbsp;&nbsp;</span>);
+    return array;
+  }
+
   // Recusrively render tables, accounting for child tables
   renderSkills(object, key, depth) {
     const objectKeys = Object.keys(object);
@@ -124,6 +131,7 @@ class SkillsPanel extends Component {
                 }}
                 onMouseLeave={() => this.setState({ isHovered: null })}
               >
+                {this.generateIndent(depth)}
                 {skill}
                 <div style={{ float: 'right', fontSize: '8px' }}>
                   {hasChildren ? '▼' : ''}

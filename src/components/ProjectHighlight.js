@@ -98,16 +98,14 @@ class ProjectHighlight extends Component {
     const { showDetails } = this.state;
 
     return (
-      <div className="section">
-        <div className="featured-project">
-          <h4>{name}</h4>
-          <img
-            src={imageURL}
-            onClick={() => this.setState({ showDetails: !showDetails })}
-          />
-          <div className="featured-project-description">{description}</div>
-          {this.renderDetails()}
-        </div>
+      <div className="featured-project">
+        <h4>{name}</h4>
+        <img
+          src={imageURL}
+          onClick={() => this.setState({ showDetails: !showDetails })}
+        />
+        <div className="featured-project-description">{description}</div>
+        {this.renderDetails()}
       </div>
     );
   }
