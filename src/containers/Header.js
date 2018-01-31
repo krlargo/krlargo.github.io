@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
+  componentDidMount() {
+    // Pass header back to parent component
+    this.props.getRef(this.header, 'header');
+  }
+
   render() {
     return (
-      <div className="header">
+      <div ref={x => (this.header = x)} className="header">
         <div className="navbar">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a
+                onClick={() => {
+                  this.refs.main.scrollIntoView();
+                }}
+              >
+                Home
+              </a>
             </li>
             <li>
               <a href="/">About</a>

@@ -97,7 +97,7 @@ class LandingHeader extends Component {
         >
           {this.state.jsx}
         </div>
-        <div className="scrollButton" onClick={() => console.log('CLICK')}>
+        <div className="scrollButton" onClick={this.props.scrollToMain}>
           <div className="text">▼</div>
         </div>
       </div>
