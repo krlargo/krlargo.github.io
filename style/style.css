@@ -304,10 +304,13 @@ ul {
 }
 
 .profile img {
-  --profileImage-width: calc(var(--leftSidePanel-width)*0.55);
+  --border-width: 2px;
+  --profileImage-width: calc(
+     (var(--leftSidePanel-width) + var(--border-width))*0.55
+  );
 
   border-radius: calc(var(--profileImage-width) / 2);
-  border: 1px solid #3338;
+  border: var(--border-width) solid var(--button-color);
 
   height: var(--profileImage-width);
   width: var(--profileImage-width);
@@ -360,6 +363,7 @@ ul {
 }
 
 .technical-skills-icons {
+  /*background-color: #ccc;*/
   margin: 10px 0;
 }
 
