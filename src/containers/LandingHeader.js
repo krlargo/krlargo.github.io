@@ -86,6 +86,14 @@ class LandingHeader extends Component {
     });
   };
 
+  generateScrollButton() {
+    const { scrollButtonColor } = this.state;
+
+    return (
+      <div className="scrollButton" onClick={() => console.log('CLICK')} />
+    );
+  }
+
   render() {
     // landing-header-text is removed as child so that it can float on scroll
     return (
@@ -97,6 +105,7 @@ class LandingHeader extends Component {
         >
           {this.state.jsx}
         </div>
+        {this.generateScrollButton()}
       </div>
     );
   }

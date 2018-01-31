@@ -155,6 +155,34 @@ body {
   white-space: nowrap; /* Keep text from wrapping on window resize */
 }
 
+.scrollButton {
+  --radius: 50px;
+  --width: calc(var(--radius)*2);
+  background-color: #bbb6;
+
+  top: calc(100vh - var(--radius));
+  position: absolute;
+
+  height: var(--radius);
+  width: var(--width);
+  margin: 0 calc((100vw - var(--width))/2);
+
+  border-radius: var(--radius) var(--radius) 0 0;
+  text-align: center;
+  line-height: 50px;
+
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.scrollButton:hover {
+  --radius: 53px;
+  background-color: #bbbc;
+  width: calc(var(--radius)*2);
+}
+
 .main-container {
   //background-color: var(--background-color);
   background: linear-gradient(45deg, #cccf, #bbbe, #999e, #aaae, #bbbe, #cccf);
