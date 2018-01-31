@@ -151,18 +151,16 @@ class SkillsPanel extends Component {
     const iconSize = containerWidth / 3;
 
     return (
-      <div className="section">
-        <div className="technical-skills" ref="technicalSkills">
-          <h3>Technical Skills</h3>
+      <div className="technical-skills" ref="technicalSkills">
+        <h3>Technical Skills</h3>
 
-          <div className="technical-skills-icons">
-            {techIcons.map((Icon, index) => (
-              <Icon width={iconSize} height={iconSize} key={index} />
-            ))}
-          </div>
-          <div className="technical-skills-list-container">
-            {this.renderSkills(technicalSkills, 'TechnicalSkills', 0)}
-          </div>
+        <div className="technical-skills-icons">
+          {techIcons.map((Icon, index) => (
+            <Icon width={iconSize} height={iconSize} key={index} />
+          ))}
+        </div>
+        <div className="technical-skills-list-container">
+          {this.renderSkills(technicalSkills, 'TechnicalSkills', 0)}
         </div>
       </div>
     );

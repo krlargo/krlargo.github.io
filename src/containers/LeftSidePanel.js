@@ -5,8 +5,12 @@ class LeftSidePanel extends Component {
   render() {
     return (
       <div className="left-side-panel">
-        <ProfilePanel />
-        <SkillsPanel />
+        <div className="section">
+          <ProfilePanel />
+        </div>
+        <div className="section">
+          <SkillsPanel />
+        </div>
       </div>
     );
   }
