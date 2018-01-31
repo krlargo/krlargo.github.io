@@ -54,8 +54,8 @@ class RightSidePanel extends Component {
   renderProjects(projects) {
     return projects.map(project => {
       return (
-        <div className="subsection">
-          <ProjectHighlight project={project} key={project.name} />
+        <div className="subsection" key={project.name}>
+          <ProjectHighlight project={project} />
         </div>
       );
     });

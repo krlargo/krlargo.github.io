@@ -79,9 +79,9 @@ class SkillsPanel extends Component {
   // Adds styling for all transitioning
   transitionDuration(duration) {
     return {
-      '-webkit-transition': `${duration}s`,
-      '-moz-transition': `${duration}s`,
-      '-o-transition': `${duration}s`,
+      WebkitTransition: `${duration}s`,
+      MozTransition: `${duration}s`,
+      OTransition: `${duration}s`,
       transition: `${duration}s`
     };
   }
@@ -89,7 +89,7 @@ class SkillsPanel extends Component {
   generateIndent(numSpaces) {
     let array = [];
     for (let i = 0; i < numSpaces; i++)
-      array.push(<span>&nbsp;&nbsp;&nbsp;</span>);
+      array.push(<span key={i}>&nbsp;&nbsp;&nbsp;</span>);
     return array;
   }
 
