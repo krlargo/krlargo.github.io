@@ -13,8 +13,10 @@ class AboutPanel extends Component {
     const { about } = this.state;
     return (
       <div className="section">
-        <div className="post">
+        <div className="subsection">
           <h3>About</h3>
+        </div>
+        <div className="subsection post">
           <p>{about}</p>
         </div>
       </div>
