@@ -249,12 +249,12 @@ Sect -|  ||     ||            ||     ||   |
   border-bottom: none;
 }
 
-.subsection h3 {
+.center-panel .subsection h3 {
   text-align: left;
   font-size: 20px;
 }
 
-.subsection h3::first-letter {
+.center-panel .subsection h3::first-letter {
   font-size: 24px;
 }
 
@@ -410,8 +410,13 @@ ul {
   --projectImage-width: calc(var(--rightSidePanel-width)*0.4);
   height: var(--projectImage-width);
   width: var(--projectImage-width);
-  border-radius: calc(var(--projectImage-width)/10);
+  border-radius: calc(var(--projectImage-width)/5);
   overflow: hidden;
+  opacity: 1;
+}
+
+.featured-project img:hover {
+  opacity: 0.7;
 }
 
 .featured-project-description {
