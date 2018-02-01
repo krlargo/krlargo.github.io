@@ -10,15 +10,28 @@ class LandingHeader extends Component {
     this.state = {
       text:
         "{\n  name: 'Kevin Largo',\n  education: 'UC Davis',\n  degree: 'Computer Science',\n  location: 'Bay Area'\n}",
-      index: 0,
-      jsx: null
+      charIndex: 0,
+      jsx: null,
+      showScrollButton: true
     };
   }
 
   // Start typing after delay
   componentDidMount() {
     setTimeout(this.startTypingAnimation, 1000);
+    window.addEventListener('scroll', this.hideScrollButton);
   }
+
+  componentDidUnmount() {
+    window.removeEventListener('scroll', this.hideScrollButton);
+  }
+
+  hideScrollButton = () => {
+    const maxDistance =
+      this.refs.landingHeader.getBoundingClientRect().height / 4;
+    const showScrollButton = getScrollDistance() < maxDistance;
+    this.setState({ showScrollButton });
+  };
 
   startTypingAnimation = () => {
     if (!this.animationInterval)
@@ -51,19 +64,19 @@ class LandingHeader extends Component {
   type = () => {
     const { state, stringToJSX, animationInterval, blinkCursor } = this;
 
-    const { index, text } = state;
+    const { charIndex, text } = state;
 
-    if (index >= text.length) {
+    if (charIndex >= text.length) {
       clearInterval(animationInterval);
-      this.setState({ index: 0, blinkCount: 0 });
+      this.setState({ charIndex: 0, blinkCount: 0 });
       //this.animationInterval = null;
       this.animationInterval = setInterval(blinkCursor, 500);
       return;
     }
 
     this.setState({
-      index: index + 1,
-      jsx: stringToJSX(text.substring(0, index + 1))
+      charIndex: charIndex + 1,
+      jsx: stringToJSX(text.substring(0, charIndex + 1))
     });
   };
 
@@ -91,17 +104,27 @@ class LandingHeader extends Component {
   };
 
   render() {
+    const { showScrollButton } = this.state;
+
     // landing-header-text is removed as child so that it can float on scroll
     return (
       <div>
-        <div className="landing-header" />
+        <div ref="landingHeader" className="landing-header" />
         <div
           className="landing-header-text"
           onClick={this.startTypingAnimation}
         >
           {this.state.jsx}
         </div>
-        <div className="scrollButton" onClick={this.props.scrollToMain}>
+        <div
+          className="scrollButton"
+          onClick={this.props.scrollToMain}
+          style={
+            showScrollButton
+              ? { opacity: 1, visibility: 'visible' }
+              : { opacity: 0, visibility: 'hidden' }
+          }
+        >
           <div className="text">▼</div>
         </div>
       </div>
