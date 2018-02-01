@@ -19,9 +19,11 @@ class Home extends Component {
   scrollToRef(refKey) {
     const headerRef = this.childRefs['header'];
     const headerHeight = headerRef.getBoundingClientRect().height;
+
     scrollToComponent(this.refs[refKey], {
       offset: -headerHeight,
       align: 'top',
+      ease: 'inOutQuad',
       duration: 1000
     });
   }
