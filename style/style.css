@@ -242,7 +242,7 @@ Sect -|  ||     ||            ||     ||   |
 }
 
 .subsection {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #bbb;
   padding: var(--margin);
 }
 
@@ -306,11 +306,9 @@ ul {
 
 .profile img {
   --border-width: 2px;
-  --profileImage-width: calc(
-     (var(--leftSidePanel-width) + var(--border-width))*0.55
-  );
+  --profileImage-width: calc(var(--leftSidePanel-width)*0.55);
 
-  border-radius: calc(var(--profileImage-width) / 2);
+  border-radius: calc((var(--profileImage-width) + var(--border-width)) / 2);
   border: var(--border-width) solid var(--button-color);
 
   height: var(--profileImage-width);
