@@ -5,20 +5,21 @@ class ExperiencePanel extends Component {
     super(props);
 
     const experience1 = {
-      company: 'Garcon LLC',
-      position: 'iOS Developer Intern',
-      responsibilities: [
-        'Worked as the primary iOS engineer tasked with the development of the iOS platform using Swift, Objective-C and Xcode’s Interface Builder.',
-        'Designed data structures and data models to manage persisted data retrieved from Firebase.',
-        'Developed the user interface based on the design team’s specifications by implementing custom view controllers and programming custom segue transitions.',
-        'Verified that views, controls, and gestures were consistent with Apple’s Human Interface Guidelines to present users with views that conform to iOS standards.',
-        'Collaborated with the business team to assess time estimation, feasibility, and complexity of proposed application features.'
-      ]
+      type: 'Mobile Development',
+      description:
+        "I've been developing for iOS since Swift first released in 2014. I currently have three of my own apps available on the App Store that I'm actively maintaining. In addition to Swift, I also have working knowledge of Objective-C and I can develop cross-platform apps using React Native."
+    };
+
+    const experience2 = {
+      type: 'Web Development',
+      description:
+        "I currently develop websites using the MERN stack (MongoDB, Express.js, React.js, Node.js). When it comes to UI/UX, I'm the sole developer and designer of my websites. This entire page was developed from scratch (from the above header animation above to the dropdown lists to the side) using React."
     };
 
     this.state = {
       experience: {
-        experience1
+        experience1,
+        experience2
       }
     };
   }
@@ -29,19 +30,14 @@ class ExperiencePanel extends Component {
 
     return keys.map(key => {
       const object = experience[key];
-      const { company, position, responsibilities } = object;
+      const { type, description } = object;
 
       return (
         <div className="subsection post" key={key}>
           <div className="post-header">
-            <h4 style={{ float: 'left' }}>{company}</h4>
-            <h4 style={{ float: 'right' }}>{position}</h4>
+            <h4 style={{ float: 'left' }}>{type}</h4>
           </div>
-          <ul>
-            {responsibilities.map((responsibility, index) => {
-              return <li key={index}>{responsibility}</li>;
-            })}
-          </ul>
+          <p>{description}</p>
         </div>
       );
     });
