@@ -48,13 +48,6 @@
     main-container
 */
 
-a.anchor {
-  display: block;
-  position: relative;
-  top: var(--header-height);
-  visibility: hidden;
-}
-
 h3,
 h4 {
   font-family: 'Trebuchet MS';
@@ -71,6 +64,13 @@ body {
   background: linear-gradient(to bottom right, whitesmoke, #ddd);
   margin: 0 auto; // Removes default margin
   padding: 0;
+}
+
+root {
+  /*  -webkit-padding-before: 0;
+  -webkit-padding-end: 0;
+  -webkit-padding-after: 0;
+  -webkit-padding-start: 0;*/
 }
 
 .header {
@@ -160,7 +160,8 @@ body {
   --width: calc(var(--radius)*2);
   background-color: #0006;
 
-  top: calc(100vh - var(--radius));
+  //top: calc(100vh - var(--radius));
+  bottom: 0;
   position: absolute;
 
   height: var(--radius);
