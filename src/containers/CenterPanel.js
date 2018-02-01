@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AboutPanel, ExperiencePanel } from '../components';
+import { AboutPanel, ExperiencePanel, WorkHistoryPanel } from '../components';
 
 class CenterPanel extends Component {
   render() {
@@ -7,6 +7,7 @@ class CenterPanel extends Component {
     return (
       <div className="center-panel">
         <AboutPanel />
+        <WorkHistoryPanel />
         <ExperiencePanel />
       </div>
     );
