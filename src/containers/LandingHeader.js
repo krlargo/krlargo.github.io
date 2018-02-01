@@ -22,7 +22,7 @@ class LandingHeader extends Component {
     window.addEventListener('scroll', this.hideScrollButton);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.hideScrollButton);
   }
 
