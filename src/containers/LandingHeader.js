@@ -16,13 +16,13 @@ class LandingHeader extends Component {
 
   // Start typing after delay
   componentDidMount() {
-    setTimeout(this.startTypingAnimation.bind(this), 1000);
+    setTimeout(this.startTypingAnimation, 1000);
   }
 
-  startTypingAnimation() {
+  startTypingAnimation = () => {
     if (!this.animationInterval)
-      this.animationInterval = setInterval(this.type.bind(this), 80);
-  }
+      this.animationInterval = setInterval(this.type, 80);
+  };
 
   // Convert substring to formatted JSX
   stringToJSX = text => {
@@ -46,6 +46,13 @@ class LandingHeader extends Component {
     });
   };
 
+  scrollDistance = () => {
+    return window.pageYOffset !== undefined
+      ? window.pageYOffset
+      : (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop;
+  };
+
   // Simulate typing, increment index and update JSX
   type = () => {
     const { state, stringToJSX, animationInterval, blinkCursor } = this;
@@ -56,7 +63,7 @@ class LandingHeader extends Component {
       clearInterval(animationInterval);
       this.setState({ index: 0, blinkCount: 0 });
       //this.animationInterval = null;
-      this.animationInterval = setInterval(blinkCursor.bind(this), 500);
+      this.animationInterval = setInterval(blinkCursor, 500);
       return;
     }
 
@@ -74,6 +81,9 @@ class LandingHeader extends Component {
     if (blinkCount >= 6) {
       clearInterval(this.animationInterval);
       this.animationInterval = null;
+
+      // Scroll automatically when animation completes if user hasn't scrolled yet
+      if (this.scrollDistance() < 20) this.props.scrollToMain();
       return;
     }
 
@@ -93,7 +103,7 @@ class LandingHeader extends Component {
         <div className="landing-header" />
         <div
           className="landing-header-text"
-          onClick={this.startTypingAnimation.bind(this)}
+          onClick={this.startTypingAnimation}
         >
           {this.state.jsx}
         </div>
