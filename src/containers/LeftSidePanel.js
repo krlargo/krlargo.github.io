@@ -12,6 +12,9 @@ class LeftSidePanel extends Component {
         </div>
         <div className="section">
           <div className="subsection">
+            <h3>Technical Skills</h3>
+          </div>
+          <div className="subsection">
             <SkillsPanel />
           </div>
         </div>

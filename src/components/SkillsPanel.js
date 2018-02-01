@@ -162,8 +162,6 @@ class SkillsPanel extends Component {
 
     return (
       <div className="technical-skills" ref="technicalSkills">
-        <h3>Technical Skills</h3>
-
         <div className="technical-skills-icons">
           {techIcons.map((Icon, index) => (
             <Icon width={iconSize} height={iconSize} key={index} />
