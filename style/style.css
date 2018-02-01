@@ -18,7 +18,7 @@
   );
 
   --title-color: #333;
-  --text-color: #555;
+  --text-color: #484848;
   --font-family: 'Arial';
   --font-size: 14px;
   --margin: 15px;
@@ -296,6 +296,7 @@ ul {
 }
 
 .left-side-panel {
+  //width: var(--LeftSidePanel-width);
   flex: var(--leftSidePanel-flex);
 }
 
@@ -403,6 +404,7 @@ ul {
 }
 
 .right-side-panel {
+  //width: var(--rightSidePanel-width);
   flex: var(--rightSidePanel-flex);
 }
 
