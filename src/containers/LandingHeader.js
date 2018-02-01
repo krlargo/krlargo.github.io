@@ -85,7 +85,7 @@ class LandingHeader extends Component {
     const { state, stringToJSX } = this;
     const { blinkCount, text } = state;
 
-    if (blinkCount >= 6) {
+    if (blinkCount >= 4) {
       clearInterval(this.animationInterval);
       this.animationInterval = null;
 
