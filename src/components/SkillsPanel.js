@@ -104,7 +104,9 @@ class SkillsPanel extends Component {
     const display = this.state.display;
 
     // Use dynamic background coloring for varying nested list colors
-    const buttonColorValue = rootButtonColorValue + 45 * depth;
+    const buttonColorValue =
+      rootButtonColorValue + Math.round(50 * Math.pow(depth, 0.9)); // Increase at decreasing rate
+    //rootButtonColorValue + 45 * depth;
     const buttonColor = `rgb(${buttonColorValue}, ${buttonColorValue}, ${buttonColorValue})`;
     const hoverColor = `rgb(${buttonColorValue +
       rootButtonColorValue}, ${buttonColorValue +
@@ -134,7 +136,7 @@ class SkillsPanel extends Component {
                 {this.generateIndent(depth)}
                 {skill}
                 <div style={{ float: 'right', fontSize: '8px' }}>
-                  {hasChildren ? '▼' : ''}
+                  {hasChildren ? (display[skill] ? '▲' : '▼') : ''}
                 </div>
               </li>
               {this.renderSkills(object[skill], skill, depth + 1)}
