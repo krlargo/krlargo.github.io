@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'react-redux';
-import { CenterSection } from '.';
+import { CenterSection } from '../components';
 import { fetchAbout, fetchWorkHistory, fetchExperience } from '../actions';
 
 class CenterPanel extends Component {
