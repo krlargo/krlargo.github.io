@@ -1,5 +1,5 @@
 :root {
-  --section-background-color: #d00f;
+  --section-background-color: #dddf;
   --background-color: #ccce; //#111e;
   --header-height: 60px;
   --content-width: 1100px;
@@ -130,7 +130,7 @@ root {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--section-background-color);
+  border-bottom: 10px solid red; /*var(--section-background-color);*/
 }
 
 .modal-container {
