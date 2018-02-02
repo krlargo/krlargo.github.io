@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import scrollToComponent from 'react-scroll-to-component';
-import { Header, LandingHeader, CenterPanelContainer, RightSidePanel } from '.';
+import {
+  Header,
+  LandingHeader,
+  CenterPanelContainer,
+  RightSidePanelContainer
+} from '.';
 import { LeftSidePanelComponent } from '../components';
 
 class Home extends Component {
@@ -34,7 +39,7 @@ class Home extends Component {
             <div ref="contentContainer" className="content-container">
               <LeftSidePanelComponent />
               <CenterPanelContainer />
-              <RightSidePanel />
+              <RightSidePanelContainer />
             </div>
           </div>
         </div>

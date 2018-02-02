@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ProjectHighlight } from '../components';
+import { RightSidePanelComponent } from '../components';
 
-class RightSidePanel extends Component {
+class RightSidePanelContainer extends Component {
   constructor() {
     super();
     this.state = {
-      projects: [
+      data: [
         {
           name: 'CodeWords',
           description: 'A digital remake of the popular board game, CodeNames.',
@@ -51,30 +51,10 @@ class RightSidePanel extends Component {
     };
   }
 
-  renderProjects(projects) {
-    return projects.map(project => {
-      return (
-        <div className="subsection" key={project.name}>
-          <ProjectHighlight project={project} />
-        </div>
-      );
-    });
-  }
-
   render() {
-    const { projects } = this.state;
-
-    return (
-      <div className="right-side-panel">
-        <div className="section">
-          <div className="subsection">
-            <h3>Recent Projects</h3>
-          </div>
-          {this.renderProjects(projects)}
-        </div>
-      </div>
-    );
+    const { data } = this.state;
+    return <RightSidePanelComponent data={data} />;
   }
 }
 
-export default RightSidePanel;
+export default RightSidePanelContainer;

@@ -5,4 +5,4 @@ export LandingHeader from './LandingHeader';
 export CenterPanelContainer from './CenterPanelContainer';
 export ProfilePanel from './ProfilePanel';
 export SkillsPanel from './SkillsPanel';
-export RightSidePanel from './RightSidePanel';
+export RightSidePanelContainer from './RightSidePanelContainer';
