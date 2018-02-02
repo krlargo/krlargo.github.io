@@ -7,7 +7,7 @@ import { technicalSkillsReducer } from './technical_skills_reducer';
 import { featuredProjectsReducer } from './featured_projects_reducer';
 
 const rootReducer = combineReducers({
-  about: aboutRedcuer,
+  about: aboutReducer,
   workHistory: workHistoryReducer,
   experience: experienceReducer,
   profileSummary: profileSummaryReducer,
