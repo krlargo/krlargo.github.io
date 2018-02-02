@@ -30,7 +30,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div onClick={event => this.dismissModal(event)}>
+      <div>
         <Header getRef={(ref, key) => (this.childRefs[key] = ref)} />
 
         <div style={{ textAlign: 'center' }}>
