@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { AppStoreIcon, GitHubIcon, LinkedInIcon } from '../images/tech-icons';
+import { fetchProfileSummary, fetchProfileImageURL } from '../actions';
 
 class ProfilePanel extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      profileImageURL: './src/images/profile-pictures/napa.jpg',
-      profileSummary:
-        "I'm a 2017 Computer Science graduate from UC Davis actively searching for a Software Engineering position in the Bay Area."
-    };
+  componentDidMount() {
+    const { fetchProfileSummary, fetchProfileImageURL } = this.props;
+    fetchProfileSummary();
+    fetchProfileImageURL();
   }
 
   render() {
-    const { profileImageURL, profileSummary } = this.state;
+    const { profileSummary, profileImageURL } = this.props;
     const iconColor = '#333';
 
     return (
@@ -39,4 +37,11 @@ class ProfilePanel extends Component {
   }
 }
 
-export default ProfilePanel;
+const mapStateToProps = ({ profileSummary, profileImageURL }) => {
+  return { profileSummary, profileImageURL };
+};
+
+export default connect(mapStateToProps, {
+  fetchProfileSummary,
+  fetchProfileImageURL
+})(ProfilePanel);
