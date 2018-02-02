@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'react-redux';
-import { CenterSection } from '../components';
+import { CenterPanelComponent } from '../components';
 import { fetchAbout, fetchWorkHistory, fetchExperience } from '../actions';
 
-class CenterPanel extends Component {
+class CenterPanelContainer extends Component {
   componentDidMount() {
     const { fetchAbout, fetchWorkHistory, fetchExperience } = this.props;
     fetchAbout();
@@ -14,15 +13,13 @@ class CenterPanel extends Component {
 
   render() {
     const { about, workHistory, experience } = this.props;
+    const data = [
+      { title: 'About', data: about },
+      { title: 'Work History', data: workHistory },
+      { title: 'Experience', data: experience }
+    ];
 
-    // Nested container divs required for floating left panel
-    return (
-      <div className="center-panel">
-        <CenterSection title="About" data={about} />
-        <CenterSection title="Work History" data={workHistory} />
-        <CenterSection title="Experience" data={experience} />
-      </div>
-    );
+    return <CenterPanelComponent data={data} />;
   }
 }
 
@@ -34,4 +31,4 @@ export default connect(mapStateToProps, {
   fetchAbout,
   fetchWorkHistory,
   fetchExperience
-})(CenterPanel);
+})(CenterPanelContainer);

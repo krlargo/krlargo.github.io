@@ -5,7 +5,7 @@ import {
   Header,
   LandingHeader,
   LeftSidePanel,
-  CenterPanel,
+  CenterPanelContainer,
   RightSidePanel
 } from '.';
 
@@ -38,7 +38,7 @@ class Home extends Component {
           <div ref="main" className="main-container">
             <div ref="contentContainer" className="content-container">
               <LeftSidePanel />
-              <CenterPanel />
+              <CenterPanelContainer />
               <RightSidePanel />
             </div>
           </div>
