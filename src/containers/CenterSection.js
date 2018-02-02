@@ -21,13 +21,28 @@ class CenterSection extends Component {
             <h4 style={{ float: 'left' }}>{titleLeft}</h4>
             <h4 style={{ float: 'right' }}>{titleRight}</h4>
           </div>
+          {this.renderSubcontentDescription()};
         </div>
       );
     });
   };
 
   // By default, return description as a plain paragraph
-  renderSubcontentDescription = description => <p>{description}</p>;
+  renderSubcontentDescription = description => {
+    if (Array.isArray(description)) {
+      // SubcontentDescription is an array
+      return (
+        <ul>
+          {description.map((point, index) => {
+            return <li key={index}>{point}</li>;
+          })}
+        </ul>
+      );
+    } else {
+      // SubcontentDescription is plain text
+      return <p>{description}</p>;
+    }
+  };
 
   render() {
     const { title, content, subcontents } = this.props;
