@@ -49,7 +49,7 @@ class ContactModal extends Component {
             </div>
             <div className="subsection" style={{ textAlign: 'left' }}>
               <div>
-                Contact me via <a href="mailto:krlargo@ucdavis.edu">email</a>.{' '}
+                Contact me via <a href="mailto:krlargo@ucdavis.edu">email</a>.
                 {
                   "If you'd like to contact me by phone, please send me an email first."
                 }

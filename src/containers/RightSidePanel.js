@@ -8,7 +8,7 @@ class RightSidePanel extends Component {
       projects: [
         {
           name: 'CodeWords',
-          description: 'A digital remake of the popular board game, CodeNames',
+          description: 'A digital remake of the popular board game, CodeNames.',
           highlights: ['1,000+ downloads on the App Store'],
           technologiesUsed: [
             'Native iOS SDK',
