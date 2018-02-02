@@ -253,8 +253,6 @@ root {
 .content-container {
   width: var(--content-width);
 
-  //  margin-top: var(--margin);
-
   position: relative;
   z-index: 500;
 
@@ -265,7 +263,7 @@ root {
 
 /*
             LSP        CP         RSP
-          ,--'---,------'------,---'--,
+         ,---'---,------'------,---'---,
           ____________________________
        _ | _____  ____________  _____ |  _
       |  ||     ||            ||_____||  _'- Subsection
@@ -333,7 +331,7 @@ ul {
   margin: 0;
   padding: 5px;
   text-align: left;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .post p {
