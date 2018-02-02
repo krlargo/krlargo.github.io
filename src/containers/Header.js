@@ -16,7 +16,7 @@ class Header extends Component {
     this.props.getRef(this.header, 'header');
   }
 
-  showPopup = refKey => {
+  presentPopup = refKey => {
     const ref = this.refs[refKey];
 
     switch (refKey) {
@@ -40,7 +40,7 @@ class Header extends Component {
     }
   };
 
-  hidePopup = () => {
+  dismissPopup = () => {
     this.setState({ popup: { visibility: false } });
   };
 
@@ -58,7 +58,7 @@ class Header extends Component {
         <Popup
           message={'This part of the site is currently under construction.'}
           visibility={popup.visibility}
-          hidePopup={this.hidePopup}
+          dismissPopup={this.dismissPopup}
           selfDestruct={true}
           top={popup.y}
           x={popup.x}
@@ -75,16 +75,18 @@ class Header extends Component {
               <a href="/">Home</a>
             </li>
             <li ref="aboutButton">
-              <a onClick={() => this.showPopup('aboutButton')}>About</a>
+              <a onClick={() => this.presentPopup('aboutButton')}>About</a>
             </li>
             <li ref="portfolioButton">
-              <a onClick={() => this.showPopup('portfolioButton')}>Portfolio</a>
+              <a onClick={() => this.presentPopup('portfolioButton')}>
+                Portfolio
+              </a>
             </li>
             <li ref="resumeButton">
-              <a onClick={() => this.showPopup('resumeButton')}>Resume</a>
+              <a onClick={() => this.presentPopup('resumeButton')}>Resume</a>
             </li>
             <li ref="contactButton">
-              <a onClick={() => this.showPopup('contactButton')}>Contact</a>
+              <a onClick={() => this.presentPopup('contactButton')}>Contact</a>
             </li>
           </ul>
         </div>

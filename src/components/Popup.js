@@ -11,7 +11,7 @@ class Popup extends Component {
   }
 
   setCountdown = () => {
-    this.countDown = setTimeout(this.props.hidePopup, 3000);
+    this.countDown = setTimeout(this.props.dismissPopup, 3000);
   };
 
   render() {
@@ -35,7 +35,7 @@ class Popup extends Component {
           width: `${modal.width}px`,
           textAlign: 'center'
         }}
-        onClick={() => this.props.hidePopup}
+        onClick={() => this.props.dismissPopup}
       >
         <div
           className="arrow-up"
