@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   CppIcon,
   FirebaseIcon,
@@ -7,45 +8,15 @@ import {
   ReactIcon,
   SwiftIcon
 } from '../images/tech-icons';
+import { fetchTechnicalSkills } from '../actions';
 
 class SkillsPanel extends Component {
   constructor() {
     super();
 
-    const technicalSkills = {
-      General: {
-        'C/C++': {},
-        Java: {},
-        GitHub: {}
-      },
-      Web: {
-        'React/Redux': {},
-        Node: {},
-        Express: {},
-        Firebase: {},
-        SQL: {},
-        NoSQL: {}
-      },
-      Mobile: {
-        iOS: {
-          Swift: {},
-          'Objective-C': {},
-          Xcode: {},
-          'iOS SDK': {},
-          'Cocoa Touch': {},
-          'Core Data': {},
-          Storyboard: {},
-          'Interface Builder': {},
-          XCTesting: {}
-        },
-        'React Native': {}
-      }
-    };
-
     this.state = {
       containerWidth: 0,
       cellHeight: 0,
-      technicalSkills,
       display: {
         TechnicalSkills: true
       }
@@ -53,10 +24,14 @@ class SkillsPanel extends Component {
   }
 
   componentDidMount() {
+    // Calculate list heights
     const { technicalSkills, GeneralRef } = this.refs;
     const containerWidth = technicalSkills.getBoundingClientRect().width;
     const cellHeight = GeneralRef.getBoundingClientRect().height;
     this.setState({ containerWidth, cellHeight });
+
+    const { fetchTechnicalSkills } = this.props;
+    fetchTechnicalSkills();
   }
 
   // Recursively calculate current skill's table height, accounting for child tables
@@ -100,7 +75,7 @@ class SkillsPanel extends Component {
     const height = this.calculateTableHeight(object, key) * cellHeight;
     const rootButtonColorValue = 51;
 
-    const display = this.state.display;
+    const { display } = this.state;
 
     // Use dynamic background coloring for varying nested list colors
     const buttonColorValue =
@@ -147,8 +122,8 @@ class SkillsPanel extends Component {
   }
 
   render() {
-    const { containerWidth, technicalSkills } = this.state;
-    const { display } = this.state;
+    const technicalSkills = this.props.technicalSkills;
+    const { containerWidth, display } = this.state;
     const techIcons = [
       SwiftIcon,
       CppIcon,
@@ -174,4 +149,8 @@ class SkillsPanel extends Component {
   }
 }
 
-export default SkillsPanel;
+const mapStateToProps = ({ technicalSkills }) => {
+  return { technicalSkills };
+};
+
+export default connect(mapStateToProps, { fetchTechnicalSkills })(SkillsPanel);

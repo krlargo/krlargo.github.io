@@ -5,5 +5,5 @@ export {
   fetchProfileSummary,
   fetchProfileImageURL
 } from './fetch_profile_action';
-//export { fetchTechnicalSkills } from './fetch_technical_skills_action';
+export { fetchTechnicalSkills } from './fetch_technical_skills_action';
 export { fetchFeaturedProjects } from './fetch_featured_projects_action';

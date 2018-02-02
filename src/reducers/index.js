@@ -6,7 +6,7 @@ import {
   profileSummaryReducer,
   profileImageURLReducer
 } from './profile_reducer';
-//import { technicalSkillsReducer } from './technical_skills_reducer';
+import { technicalSkillsReducer } from './technical_skills_reducer';
 import { featuredProjectsReducer } from './featured_projects_reducer';
 
 const rootReducer = combineReducers({
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   experience: experienceReducer,
   profileSummary: profileSummaryReducer,
   profileImageURL: profileImageURLReducer,
-  //  technicalSkills: technicalSkillsReducer,
+  technicalSkills: technicalSkillsReducer,
   featuredProjects: featuredProjectsReducer
 });
 
