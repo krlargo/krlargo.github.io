@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import scrollToComponent from 'react-scroll-to-component';
 import {
   Header,
-  ContactModal,
   LandingHeader,
   LeftSidePanel,
   CenterPanel,
@@ -14,18 +13,8 @@ class Home extends Component {
   constructor() {
     super();
     this.childRefs = {};
-    this.state = { headerHeight: 0, contactModalVisibility: false };
+    this.state = { headerHeight: 0 };
   }
-
-  presentContactModal = () => {
-    this.setState({ contactModalVisibility: true });
-  };
-
-  dismissModal = () => {
-    if (this.state.contactModalVisibility) {
-      this.setState({ contactModalVisibility: false });
-    }
-  };
 
   scrollToRef = refKey => {
     const headerRef = this.childRefs['header'];
@@ -42,15 +31,7 @@ class Home extends Component {
   render() {
     return (
       <div onClick={event => this.dismissModal(event)}>
-        <Header
-          getRef={(ref, key) => (this.childRefs[key] = ref)}
-          presentContactModal={this.presentContactModal}
-        />
-
-        <ContactModal
-          visibility={this.state.contactModalVisibility}
-          dismissModal={this.dismissModal}
-        />
+        <Header getRef={(ref, key) => (this.childRefs[key] = ref)} />
 
         <div style={{ textAlign: 'center' }}>
           <LandingHeader scrollToMain={() => this.scrollToRef('main')} />

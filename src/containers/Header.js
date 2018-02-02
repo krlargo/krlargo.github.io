@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Popup } from '../components';
+import { ContactModal } from '../containers';
 
 class Header extends Component {
   constructor() {
     super();
-    this.state = { popup: { visibility: false } };
+    this.state = {
+      contactModalVisibility: false,
+      popup: { visibility: false }
+    };
   }
 
   componentDidMount() {
@@ -15,18 +19,35 @@ class Header extends Component {
   showPopup = refKey => {
     const ref = this.refs[refKey];
 
-    if (ref) {
-      const { x, y, width, height, left, bottom } = ref.getBoundingClientRect();
+    switch (refKey) {
+      case 'contactButton':
+        this.setState({ contactModalVisibility: true });
+        break;
+      default:
+        const {
+          x,
+          y,
+          width,
+          height,
+          left,
+          bottom
+        } = ref.getBoundingClientRect();
 
-      const xPos = x + width / 2; // center-x
-      const yPos = bottom; /* margin */
+        const xPos = x + width / 2; // center-x
+        const yPos = bottom; /* margin */
 
-      this.setState({ popup: { x: xPos, y: yPos, visibility: true } });
+        this.setState({ popup: { x: xPos, y: yPos, visibility: true } });
     }
   };
 
   hidePopup = () => {
     this.setState({ popup: { visibility: false } });
+  };
+
+  dismissModal = () => {
+    if (this.state.contactModalVisibility) {
+      this.setState({ contactModalVisibility: false });
+    }
   };
 
   render() {
@@ -43,6 +64,11 @@ class Header extends Component {
           x={popup.x}
         />
 
+        <ContactModal
+          visibility={this.state.contactModalVisibility}
+          dismissModal={this.dismissModal}
+        />
+
         <div className="navbar">
           <ul>
             <li>
@@ -57,8 +83,8 @@ class Header extends Component {
             <li ref="resumeButton">
               <a onClick={() => this.showPopup('resumeButton')}>Resume</a>
             </li>
-            <li>
-              <a onClick={this.props.presentContactModal}>Contact</a>
+            <li ref="contactButton">
+              <a onClick={() => this.showPopup('contactButton')}>Contact</a>
             </li>
           </ul>
         </div>
