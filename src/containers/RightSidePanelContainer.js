@@ -1,60 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { RightSidePanelComponent } from '../components';
+import { fetchFeaturedProjects } from '../actions';
 
 class RightSidePanelContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [
-        {
-          name: 'CodeWords',
-          description: 'A digital remake of the popular board game, CodeNames.',
-          highlights: ['1,000+ downloads on the App Store'],
-          technologiesUsed: [
-            'Native iOS SDK',
-            'In-App Purchases',
-            'Firebase Database',
-            'Google AdMob'
-          ],
-          imageURL:
-            'https://docs.google.com/drawings/d/e/2PACX-1vT0RkJhLV_FlhnNj7CijrT8XWiTq9zpt65llbyubZwM3sHH6wD-87JuNdAS1llNEAUArUE0v9ZoRS1l/pub?w=1048&h=1048'
-        },
-        {
-          name: 'SyncedLists',
-          description:
-            'An iOS application that allows users to create and share checklists with realtime editing.',
-          highlights: [],
-          technologiesUsed: [
-            'Native iOS SDK',
-            'Firebase Authorization',
-            'Firebase Database',
-            'Google AdMob'
-          ],
-          imageURL:
-            'https://docs.google.com/drawings/d/e/2PACX-1vT37SFAa9jyGZ1VrbNgjvemvSALQSLn4cQTqShjr5OrOJuc1H-88naiso9_J4_FqQdzq_gpB-2vxGJ8/pub?w=1049&h=1049'
-        },
-        {
-          name: 'QuickSplit',
-          description:
-            'An iOS application that uses a spreadsheet interface to make it easy to split shared items on dinner bills.',
-          highlights: ['2,000+ downloads on the App Store'],
-          technologiesUsed: [
-            'Native iOS SDK',
-            'In-App Purchases',
-            'CoreData',
-            'Google AdMob'
-          ],
-          imageURL:
-            'https://docs.google.com/drawings/d/1NZenN700uCF4OEvn0BstWG4r-dlZVNFkP91xjyLaPe4/pub?w=1049&h=1049'
-        }
-      ]
-    };
+  componentDidMount() {
+    const { fetchFeaturedProjects } = this.props;
+    fetchFeaturedProjects();
   }
 
   render() {
-    const { data } = this.state;
-    return <RightSidePanelComponent data={data} />;
+    const { featuredProjects } = this.props;
+    return <RightSidePanelComponent data={featuredProjects} />;
   }
 }
 
-export default RightSidePanelContainer;
+const mapStateToProps = ({ featuredProjects }) => {
+  return { featuredProjects };
+};
+
+export default connect(mapStateToProps, { fetchFeaturedProjects })(
+  RightSidePanelContainer
+);
