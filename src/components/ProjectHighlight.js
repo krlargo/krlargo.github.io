@@ -14,11 +14,6 @@ class ProjectHighlight extends Component {
       technologies
     } = this.refs;
 
-    /*const detailsContainerStyle = window.getComputedStyle(detailsContainer);
-    const detailsContainerPaddingVertical =
-      parseInt(detailsContainerStyle.getPropertyValue('padding-top')) +
-      parseInt(detailsContainerStyle.getPropertyValue('padding-bottom'));*/
-
     const highlightsSubtitleHeight = highlightsSubtitle
       ? highlightsSubtitle.getBoundingClientRect().height
       : 0;
