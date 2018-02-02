@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProjectHighlight extends Component {
+class FeaturedProject extends Component {
   constructor(props) {
     super(props);
     this.state = { showDetails: false, expandedDetailHeight: 0 };
@@ -106,4 +106,4 @@ class ProjectHighlight extends Component {
   }
 }
 
-export default ProjectHighlight;
+export default FeaturedProject;

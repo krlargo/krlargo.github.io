@@ -2,5 +2,5 @@ export CenterPanelComponent from './CenterPanelComponent';
 export CenterSection from './CenterSection';
 export LeftSidePanelComponent from './LeftSidePanelComponent';
 export RightSidePanelComponent from './RightSidePanelComponent';
-export ProjectHighlight from './ProjectHighlight';
+export FeaturedProject from './FeaturedProject';
 export Popup from './Popup';

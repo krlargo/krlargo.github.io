@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { ProjectHighlight } from '../components';
+import { FeaturedProject } from '../components';
 
 class RightSidePanelComponent extends Component {
   renderProjects(projects) {
     return projects.map(project => {
       return (
         <div className="subsection" key={project.name}>
-          <ProjectHighlight project={project} />
+          <FeaturedProject project={project} />
         </div>
       );
     });
