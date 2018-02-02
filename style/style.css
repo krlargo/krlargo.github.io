@@ -118,6 +118,56 @@ root {
   border-bottom: 2px solid white;
 }
 
+.popup {
+  -webkit-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+/* For use with Popup */
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--section-background-color);
+}
+
+.modal-container {
+  background-color: #0009;
+  position: fixed;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.modal-container svg {
+  height: 30px;
+  width: 30px;
+  color: var(--title-color);
+}
+
+.x-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+}
+
+.contact-modal {
+  width: 600px;
+  margin: auto;
+}
+
 .landing-header {
   background-image: url('../src/images/landing-header-background/macbook-notepad.jpg');
   background-size: cover;
