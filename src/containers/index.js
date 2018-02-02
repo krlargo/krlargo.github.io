@@ -4,4 +4,6 @@ export ContactModal from './ContactModal';
 export LandingHeader from './LandingHeader';
 export CenterPanel from './CenterPanel';
 export LeftSidePanel from './LeftSidePanel';
+export ProfilePanel from './ProfilePanel';
+export SkillsPanel from './SkillsPanel';
 export RightSidePanel from './RightSidePanel';

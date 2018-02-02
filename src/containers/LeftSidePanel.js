@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SkillsPanel, ProfilePanel } from '../components';
+import { SkillsPanel, ProfilePanel } from '.';
 
 class LeftSidePanel extends Component {
   render() {
