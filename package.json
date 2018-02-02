@@ -11,7 +11,9 @@
       "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build",
+    "build":
+      "node_modules/webpack/bin/webpack.js -p | mv bundle.js build ; cp style/style.css build"
   },
   "author": "",
   "license": "ISC",
