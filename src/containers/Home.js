@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import scrollToComponent from 'react-scroll-to-component';
-import {
-  Header,
-  LandingHeader,
-  LeftSidePanel,
-  CenterPanelContainer,
-  RightSidePanel
-} from '.';
+import { Header, LandingHeader, CenterPanelContainer, RightSidePanel } from '.';
+import { LeftSidePanelComponent } from '../components';
 
 class Home extends Component {
   constructor() {
@@ -37,7 +32,7 @@ class Home extends Component {
           <LandingHeader scrollToMain={() => this.scrollToRef('main')} />
           <div ref="main" className="main-container">
             <div ref="contentContainer" className="content-container">
-              <LeftSidePanel />
+              <LeftSidePanelComponent />
               <CenterPanelContainer />
               <RightSidePanel />
             </div>

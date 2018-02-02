@@ -3,7 +3,6 @@ export Header from './Header';
 export ContactModal from './ContactModal';
 export LandingHeader from './LandingHeader';
 export CenterPanelContainer from './CenterPanelContainer';
-export LeftSidePanel from './LeftSidePanel';
 export ProfilePanel from './ProfilePanel';
 export SkillsPanel from './SkillsPanel';
 export RightSidePanel from './RightSidePanel';

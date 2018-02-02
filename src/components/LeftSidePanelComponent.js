@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { SkillsPanel, ProfilePanel } from '.';
+import { SkillsPanel, ProfilePanel } from '../containers';
 
-class LeftSidePanel extends Component {
+class LeftSidePanelComponent extends Component {
   render() {
     return (
       <div className="left-side-panel">
@@ -23,4 +23,4 @@ class LeftSidePanel extends Component {
   }
 }
 
-export default LeftSidePanel;
+export default LeftSidePanelComponent;
