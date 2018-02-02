@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'react-redux';
-import { ExperiencePanel } from '../components';
 import { CenterSection } from '.';
-import { fetchAbout, fetchWorkHistory } from '../actions';
+import { fetchAbout, fetchWorkHistory, fetchExperience } from '../actions';
 
 class CenterPanel extends Component {
   componentDidMount() {
-    const { fetchAbout, fetchWorkHistory } = this.props;
+    const { fetchAbout, fetchWorkHistory, fetchExperience } = this.props;
     fetchAbout();
     fetchWorkHistory();
+    fetchExperience();
   }
 
   render() {
-    const { about, workHistory } = this.props;
+    const { about, workHistory, experience } = this.props;
 
     // Nested container divs required for floating left panel
     return (
       <div className="center-panel">
         <CenterSection title="About" data={about} />
         <CenterSection title="Work History" data={workHistory} />
-        <ExperiencePanel />
+        <CenterSection title="Experience" data={experience} />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ about, workHistory }) => {
-  return { about, workHistory };
+const mapStateToProps = ({ about, workHistory, experience }) => {
+  return { about, workHistory, experience };
 };
 
-export default connect(mapStateToProps, { fetchAbout, fetchWorkHistory })(
-  CenterPanel
-);
+export default connect(mapStateToProps, {
+  fetchAbout,
+  fetchWorkHistory,
+  fetchExperience
+})(CenterPanel);
