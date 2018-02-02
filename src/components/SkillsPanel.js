@@ -5,8 +5,7 @@ import {
   JavaIcon,
   JavaScriptIcon,
   ReactIcon,
-  SwiftIcon,
-  SwiftIconColored
+  SwiftIcon
 } from '../images/tech-icons';
 
 class SkillsPanel extends Component {
