@@ -7,7 +7,9 @@ class Header extends Component {
     super();
     this.state = {
       contactModalVisibility: false,
-      popup: { visibility: false }
+      popup: { visibility: false },
+      resumeURL:
+        'https://docs.google.com/document/d/e/2PACX-1vQdGvrj1Ic80pjKW-wBtnRtbGLmInj06DXSdYbTQYh7zO8IqlBgeqIm5Rq0XABaXswX3jpvVT3A4-A1/pub'
     };
   }
 
@@ -55,6 +57,7 @@ class Header extends Component {
 
   render() {
     const { popup } = this.state;
+    const { resumeURL } = this.state; //this.props
 
     return (
       <div ref={x => (this.header = x)} className="header">
@@ -86,7 +89,9 @@ class Header extends Component {
               </a>
             </li>
             <li ref="resumeButton">
-              <a onClick={() => this.presentPopup('resumeButton')}>Resume</a>
+              <a href={resumeURL} target="_blank">
+                Resume
+              </a>
             </li>
             <li ref="contactButton">
               <a onClick={() => this.presentPopup('contactButton')}>Contact</a>
