@@ -352,6 +352,7 @@ ul {
 
 .post p {
   text-align: justify;
+  white-space: pre-wrap;
 }
 
 .post ul {
