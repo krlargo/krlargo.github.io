@@ -10,7 +10,9 @@ class ContactModal extends Component {
 
   render() {
     const { xIsHighlighted } = this.state;
-    const { visibility, dismissModal } = this.props;
+    const { visibility, dismissModal, size } = this.props;
+    const { width, height } = size || {};
+
     return (
       <div
         className="modal-container"
@@ -23,6 +25,7 @@ class ContactModal extends Component {
       >
         <div
           className="contact-modal"
+          style={{ width, height }}
           onClick={event => {
             event.stopPropagation(); // Ignore container's dismissal call
           }}
@@ -48,17 +51,7 @@ class ContactModal extends Component {
                 </div>
               </div>
             </div>
-            <div className="subsection" style={{ textAlign: 'left' }}>
-              <p>
-                I am <strong>actively</strong> looking for an{' '}
-                <strong>Entry/Junior level</strong> Software Engineering
-                position in the <strong>Bay Area</strong>. I am{' '}
-                <strong>not</strong> currently available to relocate.<br />
-                <br />
-                Contact me via email at{' '}
-                <a href="mailto:krlargo@ucdavis.edu">krlargo@ucdavis.edu</a>.
-              </p>
-            </div>
+            {this.props.content}
           </div>
         </div>
       </div>
