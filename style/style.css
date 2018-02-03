@@ -61,7 +61,12 @@ h4 {
 }
 
 body {
-  background: linear-gradient(to bottom right, whitesmoke, #ddd);
+  //background: linear-gradient(to bottom right, whitesmoke, #ddd);
+  background-image: url('../src/images/landing-header-background/macbook-notepad.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   margin: 0 auto; // Removes default margin
   padding: 0;
 }
@@ -185,10 +190,7 @@ root {
 }
 
 .landing-header {
-  background-image: url('../src/images/landing-header-background/macbook-notepad.jpg');
-  background-size: cover;
-  background-position: center;
-  background-color: black;
+  background-color: transparent;
 
   /* Initially take up full screen */
   height: 100vh;
@@ -206,7 +208,7 @@ root {
 
 .landing-header-text {
   text-align: left;
-  background-color: #bbb6;
+  background-color: #8888;
   color: white;
   font-family: 'Courier New';
   font-size: 40px;
@@ -552,7 +554,7 @@ ul {
 }
 
 .iframe-container {
-  background-color: #444;
+  background-color: #8888;
   height: 100%;
   width: 100%;
   paddingtop: var(--header-height);
