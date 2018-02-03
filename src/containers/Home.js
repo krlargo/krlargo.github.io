@@ -39,7 +39,7 @@ class Home extends Component {
         <div ref="contentContainer" className="content-container">
           <LeftSidePanelComponent />
           <CenterPanelContainer />
-          <RightSidePanelContainer />*/
+          <RightSidePanelContainer />
         </div>
       </div>
     </div>
