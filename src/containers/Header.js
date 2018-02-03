@@ -80,9 +80,9 @@ class Header extends Component {
             <li>
               <a href="/">Home</a>
             </li>
-            <li ref="aboutButton">
+            {/*<li ref="aboutButton">
               <a onClick={() => this.presentPopup('aboutButton')}>About</a>
-            </li>
+            </li>*/}
             <li ref="portfolioButton">
               <a onClick={() => this.presentPopup('portfolioButton')}>
                 Portfolio
