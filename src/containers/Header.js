@@ -17,6 +17,9 @@ class Header extends Component {
   }
 
   presentPopup = refKey => {
+    if (this.state.popup.visibility || this.state.contactModalVisibility)
+      return;
+
     const ref = this.refs[refKey];
 
     switch (refKey) {

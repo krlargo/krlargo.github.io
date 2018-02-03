@@ -28,15 +28,16 @@ class ContactModal extends Component {
           }}
         >
           <div className="section">
-            <div className="subsection">
+            <div className="subsection" style={{ padding: '15px' }}>
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  height: '20px'
                 }}
               >
-                <h3>Contact Info</h3>
+                <h3>Contact</h3>
                 <div
                   className="x-button"
                   onClick={dismissModal}
@@ -48,19 +49,15 @@ class ContactModal extends Component {
               </div>
             </div>
             <div className="subsection" style={{ textAlign: 'left' }}>
-              <div>
-                Contact me via <a href="mailto:krlargo@ucdavis.edu">email</a>.
-                {
-                  "If you'd like to contact me by phone, please send me an email first."
-                }
-              </div>
-              <br />
-              <div>
+              <p>
                 I am <strong>actively</strong> looking for an{' '}
                 <strong>Entry/Junior level</strong> Software Engineering
                 position in the <strong>Bay Area</strong>. I am{' '}
-                <strong>not</strong> currently available to relocate.
-              </div>
+                <strong>not</strong> currently available to relocate.<br />
+                <br />
+                Contact me via email at{' '}
+                <a href="mailto:krlargo@ucdavis.edu">krlargo@ucdavis.edu</a>.
+              </p>
             </div>
           </div>
         </div>

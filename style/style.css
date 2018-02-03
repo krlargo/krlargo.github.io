@@ -160,12 +160,28 @@ root {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 18px;
 }
 
 .contact-modal {
-  width: 600px;
+  width: 500px;
   margin: auto;
+}
+
+.contact-modal h3 {
+  flex: 1; /* Take up max space, push x to the right */
+  font-size: 20px;
+}
+
+.contact-modal p {
+  font-size: 18px;
+}
+
+.contact-modal p a {
+  color: #444;
+}
+
+.subsection a:hover {
+  color: #888;
 }
 
 .landing-header {
@@ -291,7 +307,7 @@ Sect -|  ||     ||            ||     ||   |
 
 .subsection {
   border-bottom: 1px solid #bbb;
-  padding: var(--margin);
+  padding: var(--margin) calc(1.5*var(--margin));
 }
 
 .subsection:last-child {
@@ -331,7 +347,7 @@ ul {
   margin: 0;
   padding: 5px;
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .post p {
