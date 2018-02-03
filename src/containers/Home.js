@@ -7,14 +7,18 @@ import {
   CenterPanelContainer,
   RightSidePanelContainer
 } from '.';
-import { LeftSidePanelComponent } from '../components';
+import { Resume, LeftSidePanelComponent } from '../components';
 
 class Home extends Component {
   constructor() {
     super();
     this.childRefs = {};
-    this.state = { headerHeight: 0 };
+    this.state = { headerHeight: 0, display: 'main' };
   }
+
+  setDisplay = display => {
+    this.setState({ display });
+  };
 
   scrollToRef = refKey => {
     const headerRef = this.childRefs['header'];
@@ -28,19 +32,49 @@ class Home extends Component {
     });
   };
 
+  renderMain = () => (
+    <div>
+      <LandingHeader scrollToMain={() => this.scrollToRef('main')} />
+      <div ref="main" className="main-container">
+        <div ref="contentContainer" className="content-container">
+          <LeftSidePanelComponent />
+          <CenterPanelContainer />
+          <RightSidePanelContainer />*/
+        </div>
+      </div>
+    </div>
+  );
+
+  renderResume = () => (
+    <div className="iframe-container">
+      <Resume />
+    </div>
+  );
+
   render() {
+    const { display } = this.state;
+
     return (
       <div>
-        <Header getRef={(ref, key) => (this.childRefs[key] = ref)} />
+        <Header
+          getRef={(ref, key) => (this.childRefs[key] = ref)}
+          setDisplay={this.setDisplay}
+        />
 
         <div style={{ textAlign: 'center' }}>
-          <LandingHeader scrollToMain={() => this.scrollToRef('main')} />
-          <div ref="main" className="main-container">
-            <div ref="contentContainer" className="content-container">
-              <LeftSidePanelComponent />
-              <CenterPanelContainer />
-              <RightSidePanelContainer />
-            </div>
+          <div style={{ height: '100vh', width: '100vw' }}>
+            {(() => {
+              switch (display) {
+                case 'main':
+                  return this.renderMain();
+                  break;
+                case 'resume':
+                  return this.renderResume();
+                  break;
+                default:
+                  return this.renderMain();
+              }
+            })()}
           </div>
         </div>
       </div>
