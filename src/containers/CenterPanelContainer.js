@@ -14,9 +14,9 @@ class CenterPanelContainer extends Component {
   render() {
     const { about, workHistory, experience } = this.props;
     const data = [
-      { title: 'About', data: about },
-      { title: 'Work History', data: workHistory },
-      { title: 'Experience', data: experience }
+      { title: 'About Me', data: about },
+      { title: 'My Work History', data: workHistory },
+      { title: 'What I do', data: experience }
     ];
 
     return <CenterPanelComponent data={data} />;
