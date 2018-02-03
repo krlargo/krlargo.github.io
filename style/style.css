@@ -550,3 +550,19 @@ ul {
   font-size: 12px;
   text-align: left;
 }
+
+.iframe-container {
+  background-color: #444;
+  height: 100%;
+  width: 100%;
+  paddingtop: var(--header-height);
+  marginbottom: 0;
+  overflow: scroll;
+}
+
+.resume-iframe {
+  margin: 100px;
+  box-shadow: 0px 2px 5px gray;
+  height: 1200px;
+  width: 800px;
+}
