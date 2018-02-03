@@ -22,7 +22,7 @@ class Popup extends Component {
     };
     const arrow = { width: 12 };
 
-    if (selfDestruct) this.setCountdown();
+    if (selfDestruct && visibility) this.setCountdown();
 
     return (
       <div
