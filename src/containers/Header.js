@@ -1,42 +1,10 @@
 import React, { Component } from 'react';
-import { Popup } from '../components';
+import { Contact, Popup } from '../components';
 import { ContactModal } from '../containers';
-
-/*
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vQdGvrj1Ic80pjKW-wBtnRtbGLmInj06DXSdYbTQYh7zO8IqlBgeqIm5Rq0XABaXswX3jpvVT3A4-A1/pub?embedded=true"></iframe>
-*/
-
-/*
-<div className="subsection" style={{ textAlign: 'left' }}>
-  <p>
-    I am <strong>actively</strong> looking for an{' '}
-    <strong>Entry/Junior level</strong> Software Engineering
-    position in the <strong>Bay Area</strong>. I am{' '}
-    <strong>not</strong> currently available to relocate.<br />
-    <br />
-    Contact me via email at{' '}
-    <a href="mailto:krlargo@ucdavis.edu">krlargo@ucdavis.edu</a>.
-  </p>
-</div>
-*/
 
 class Header extends Component {
   resumeContent = (
     <iframe src="https://docs.google.com/document/d/e/2PACX-1vQdGvrj1Ic80pjKW-wBtnRtbGLmInj06DXSdYbTQYh7zO8IqlBgeqIm5Rq0XABaXswX3jpvVT3A4-A1/pub?embedded=true" />
-  );
-
-  contactContent = (
-    <div className="subsection" style={{ textAlign: 'left' }}>
-      <p>
-        I am <strong>actively</strong> looking for an{' '}
-        <strong>Entry/Junior level</strong> Software Engineering position in the{' '}
-        <strong>Bay Area</strong>. I am <strong>not</strong> currently available
-        to relocate.<br />
-        <br />
-        Contact me via email at{' '}
-        <a href="mailto:krlargo@ucdavis.edu">krlargo@ucdavis.edu</a>.
-      </p>
-    </div>
   );
 
   constructor() {
@@ -70,7 +38,7 @@ class Header extends Component {
     switch (refKey) {
       case 'contactButton':
         visibility = true;
-        content = this.contactContent;
+        content = <Contact />;
         size = { width: '500px', height: null };
         modal = { visibility, content, size };
         this.setState({ modal });
@@ -107,13 +75,16 @@ class Header extends Component {
 
   dismissModal = () => {
     if (this.state.modal.visibility) {
-      const modal = { visibility: false };
+      // Return original modified state so that modal doesn't collapse on dismissal
+      let { modal } = this.state;
+      modal.visibility = false;
       this.setState({ modal });
     }
   };
 
   render() {
     const { underConstructionPopup, modal } = this.state;
+    const { setDisplay } = this.props;
     const { resumeURL } = this.state; //this.props
 
     return (
@@ -137,7 +108,7 @@ class Header extends Component {
         <div className="navbar">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a onClick={() => setDisplay('main')}>Home</a>
             </li>
             <li ref="portfolioButton">
               <a onClick={() => this.presentPopup('portfolioButton')}>
@@ -145,7 +116,7 @@ class Header extends Component {
               </a>
             </li>
             <li ref="resumeButton">
-              <a onClick={() => this.presentPopup('resumeButton')}>Resume</a>
+              <a onClick={() => setDisplay('resume')}>Resume</a>
             </li>
             <li ref="contactButton">
               <a onClick={() => this.presentPopup('contactButton')}>Contact</a>
