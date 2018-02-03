@@ -24,6 +24,7 @@ class LandingHeader extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.hideScrollButton);
+    clearInterval(this.animationInterval);
   }
 
   hideScrollButton = () => {
