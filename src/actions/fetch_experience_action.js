@@ -12,10 +12,16 @@ export const fetchExperience = () => dispatch => {
   const experience2 = {
     titleLeft: 'Web Development',
     content:
-      "I currently develop websites using the MERN stack (MongoDB, Express.js, React.js, Node.js). When it comes to UI/UX, I'm the sole developer and designer of my websites. This entire page was developed from scratch (from the above header animation above to the dropdown lists to the side) using React."
+      'I currently develop websites using the MERN stack (MongoDB, Express.js, React.js, Node.js). This entire page was developed and designed from scratch using React.'
   };
 
-  experience.subcontents = [experience1, experience2];
+  const experience3 = {
+    titleLeft: 'User Interface Design',
+    content:
+      'I develop and design all my user interfaces and app icons myself. I personally believe that an excellent interface is equally as important as program functionality.'
+  };
+
+  experience.subcontents = [experience1, experience2, experience3];
 
   dispatch({
     type: FETCH_EXPERIENCE,
