@@ -553,6 +553,13 @@ ul {
   text-align: left;
 }
 
+.main-container {
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
 .iframe-container {
   background-color: #8888;
   height: 100%;
@@ -560,6 +567,11 @@ ul {
   paddingtop: var(--header-height);
   marginbottom: 0;
   overflow: scroll;
+
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .resume-iframe {
