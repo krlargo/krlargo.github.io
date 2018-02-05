@@ -12,8 +12,7 @@
     "test:watch": "npm run test -- --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
-    "build":
-      "node_modules/webpack/bin/webpack.js -p | mv bundle.js build ; cp style/style.css build"
+    "build": "node_modules/webpack/bin/webpack.js -p | cp style/style.css build"
   },
   "author": "",
   "license": "ISC",
