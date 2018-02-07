@@ -7,10 +7,17 @@ export const fetchTechnicalSkills = () => dispatch => {
       Java: {},
       GitHub: {}
     },
-    Web: {
-      'React/Redux': {},
+    Frontend: {
+      'React': {},
+			'Redux': {},
+			'JavaScript': {},
+			'HTML': {},
+			'CSS': {}
+		},
+		Backend: {
       Node: {},
       Express: {},
+			MongoDB: {},
       Firebase: {},
       SQL: {},
       NoSQL: {}
