@@ -89,7 +89,7 @@ class FeaturedProject extends Component {
   }
 
   render() {
-    const { name, description, imageURL } = this.props.project;
+    const { name, description, imageURL, projectURL } = this.props.project;
     const { showDetails } = this.state;
 
     return (
@@ -97,7 +97,9 @@ class FeaturedProject extends Component {
         <h4>{name}</h4>
         <img
           src={imageURL}
-          onClick={() => this.setState({ showDetails: !showDetails })}
+          onClick={() => {
+            window.open(projectURL);
+          }}
         />
         <div className="featured-project-description">{description}</div>
         {this.renderDetails()}
