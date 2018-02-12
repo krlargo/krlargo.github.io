@@ -11,7 +11,7 @@ class Popup extends Component {
   }
 
   setCountdown = () => {
-    this.countDown = setTimeout(this.props.dismissPopup, 3000);
+    this.countDown = setTimeout(this.props.dismissPopup, 4000);
   };
 
   render() {

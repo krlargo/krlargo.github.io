@@ -39,7 +39,7 @@ class Header extends Component {
       case 'contactButton':
         visibility = true;
         content = <Contact />;
-        size = { width: '500px', height: null };
+        size = { width: '600px', height: null };
         modal = { visibility, content, size };
         this.setState({ modal });
         break;
@@ -50,22 +50,6 @@ class Header extends Component {
         modal = { visibility, content, size };
         this.setState({ modal });
         break;
-      case 'portfolioButton':
-        const {
-          x,
-          y,
-          width,
-          height,
-          left,
-          bottom
-        } = ref.getBoundingClientRect();
-
-        const xPos = x + width / 2; // center-x
-        const yPos = bottom; /* margin */
-
-        this.setState({
-          underConstructionPopup: { x: xPos, y: yPos, visibility: true }
-        });
       default:
         const {
           x,
