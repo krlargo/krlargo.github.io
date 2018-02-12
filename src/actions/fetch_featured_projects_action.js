@@ -3,18 +3,18 @@ import { FETCH_FEATURED_PROJECTS } from './types';
 export const fetchFeaturedProjects = () => dispatch => {
   let featuredProjects = [
     {
-      name: 'CodeWords',
-      description: 'A digital remake of the popular board game, CodeNames.',
-      highlights: ['1,000+ downloads on the App Store'],
+      name: 'Left To Drop',
+      description:
+        "A hybrid mobile app for viewing and rating the current streetwear season's items.",
+      highlights: [],
       technologiesUsed: [
-        'Native iOS SDK',
-        'In-App Purchases',
+        'React Native',
+        'Firebase Authentication',
         'Firebase Database',
         'Google AdMob'
       ],
-      imageURL:
-        'https://docs.google.com/drawings/d/e/2PACX-1vT0RkJhLV_FlhnNj7CijrT8XWiTq9zpt65llbyubZwM3sHH6wD-87JuNdAS1llNEAUArUE0v9ZoRS1l/pub?w=1048&h=1048',
-      projectURL: 'https://krlargo.github.io/CodeWords'
+      imageURL: 'https://krlargo.github.io/LeftToDrop/App%20Icon.png',
+      projectURL: 'https://krlargo.github.io/LeftToDrop'
     },
     {
       name: 'SyncedLists',
@@ -23,7 +23,7 @@ export const fetchFeaturedProjects = () => dispatch => {
       highlights: [],
       technologiesUsed: [
         'Native iOS SDK',
-        'Firebase Authorization',
+        'Firebase Authentication',
         'Firebase Database',
         'Google AdMob'
       ],
