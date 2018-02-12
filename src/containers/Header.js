@@ -50,6 +50,22 @@ class Header extends Component {
         modal = { visibility, content, size };
         this.setState({ modal });
         break;
+      case 'portfolioButton':
+        const {
+          x,
+          y,
+          width,
+          height,
+          left,
+          bottom
+        } = ref.getBoundingClientRect();
+
+        const xPos = x + width / 2; // center-x
+        const yPos = bottom; /* margin */
+
+        this.setState({
+          underConstructionPopup: { x: xPos, y: yPos, visibility: true }
+        });
       default:
         const {
           x,
@@ -90,7 +106,14 @@ class Header extends Component {
     return (
       <div ref={x => (this.header = x)} className="header">
         <Popup
-          message={'This part of the site is currently under construction.'}
+          message={
+            <div>
+              This part of the site is currently under construction, but you can
+              view it from my{' '}
+              <a href="https://krlargo.github.io/home/#Projects">old website</a>{' '}
+              in the meantime.
+            </div>
+          }
           visibility={underConstructionPopup.visibility}
           dismissPopup={this.dismissPopup}
           selfDestruct={true}
