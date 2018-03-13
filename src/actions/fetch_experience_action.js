@@ -12,7 +12,7 @@ export const fetchExperience = () => dispatch => {
   const experience2 = {
     titleLeft: 'Web Development',
     content:
-      'I currently develop websites using the MERN stack (MongoDB, Express.js, React.js, Node.js). This entire page was developed and designed from scratch using React.'
+      "I'm currently learning to develop websites using the MERN stack (MongoDB, Express.js, React.js, Node.js). This entire page was developed and designed from scratch using React."
   };
 
   const experience3 = {
