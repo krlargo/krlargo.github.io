@@ -20,7 +20,7 @@ class ProfilePanel extends Component {
         <div className="profile-summary">{profileSummary}</div>
         <div className="profile-link">
           <AppStoreIcon color={iconColor} />
-          <a href="https://itunes.apple.com/us/developer/kevin-largo/id1269350192?mt=8">
+          <a href="https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fkevinlargo">
             App Store Link
           </a>
         </div>
